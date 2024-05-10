@@ -1,0 +1,736 @@
+2021-01-07 19:05:30,522 agent number of parameters: 2230413
+2021-01-07 19:07:46,658 update: 1	fps: 63.508	
+2021-01-07 19:07:46,659 update: 1	env-time: 100.418s	pth-time: 28.157s	frames: 8192
+2021-01-07 19:07:46,659 Average window size: 2  reward: 7.366
+2021-01-07 19:08:55,155 update: 2	fps: 62.221	
+2021-01-07 19:08:55,156 update: 2	env-time: 149.808s	pth-time: 47.139s	frames: 12288
+2021-01-07 19:08:55,156 Average window size: 3  reward: 7.281
+2021-01-07 19:10:08,262 update: 3	fps: 60.548	
+2021-01-07 19:10:08,263 update: 3	env-time: 205.266s	pth-time: 64.673s	frames: 16384
+2021-01-07 19:10:08,263 Average window size: 4  reward: 7.403
+2021-01-07 19:11:16,363 update: 4	fps: 60.467	
+2021-01-07 19:11:16,364 update: 4	env-time: 252.594s	pth-time: 85.340s	frames: 20480
+2021-01-07 19:11:16,364 Average window size: 5  reward: 7.415
+2021-01-07 19:12:37,005 update: 5	fps: 58.606	
+2021-01-07 19:12:37,006 update: 5	env-time: 314.335s	pth-time: 104.109s	frames: 24576
+2021-01-07 19:12:37,006 Average window size: 6  reward: 7.539
+2021-01-07 19:13:47,336 update: 6	fps: 58.554	
+2021-01-07 19:13:47,336 update: 6	env-time: 365.085s	pth-time: 123.567s	frames: 28672
+2021-01-07 19:13:47,337 Average window size: 7  reward: 7.596
+2021-01-07 19:15:00,225 update: 7	fps: 58.248	
+2021-01-07 19:15:00,226 update: 7	env-time: 413.276s	pth-time: 148.146s	frames: 32768
+2021-01-07 19:15:00,226 Average window size: 8  reward: 7.579
+2021-01-07 19:16:16,873 update: 8	fps: 57.671	
+2021-01-07 19:16:16,874 update: 8	env-time: 466.147s	pth-time: 171.807s	frames: 36864
+2021-01-07 19:16:16,874 Average window size: 9  reward: 7.564
+2021-01-07 19:17:27,581 update: 9	fps: 57.697	
+2021-01-07 19:17:27,582 update: 9	env-time: 515.799s	pth-time: 192.752s	frames: 40960
+2021-01-07 19:17:27,582 Average window size: 10  reward: 7.528
+2021-01-07 19:18:46,401 update: 10	fps: 57.124	
+2021-01-07 19:18:46,402 update: 10	env-time: 570.273s	pth-time: 216.966s	frames: 45056
+2021-01-07 19:18:46,402 Average window size: 10  reward: 7.606
+2021-01-07 19:20:05,397 update: 11	fps: 56.644	
+2021-01-07 19:20:05,398 update: 11	env-time: 622.857s	pth-time: 243.151s	frames: 49152
+2021-01-07 19:20:05,398 Average window size: 10  reward: 7.739
+2021-01-07 19:21:31,176 update: 12	fps: 55.844	
+2021-01-07 19:21:31,177 update: 12	env-time: 682.912s	pth-time: 268.749s	frames: 53248
+2021-01-07 19:21:31,177 Average window size: 10  reward: 7.906
+2021-01-07 19:22:52,370 update: 13	fps: 55.421	
+2021-01-07 19:22:52,371 update: 13	env-time: 736.670s	pth-time: 296.068s	frames: 57344
+2021-01-07 19:22:52,371 Average window size: 10  reward: 8.167
+2021-01-07 19:24:09,508 update: 14	fps: 55.260	
+2021-01-07 19:24:09,508 update: 14	env-time: 790.272s	pth-time: 319.465s	frames: 61440
+2021-01-07 19:24:09,509 Average window size: 10  reward: 8.411
+2021-01-07 19:25:51,072 update: 15	fps: 54.010	
+2021-01-07 19:25:51,074 update: 15	env-time: 861.071s	pth-time: 350.118s	frames: 65536
+2021-01-07 19:25:51,074 Average window size: 10  reward: 8.761
+2021-01-07 19:27:20,080 update: 16	fps: 53.464	
+2021-01-07 19:27:20,081 update: 16	env-time: 922.433s	pth-time: 377.631s	frames: 69632
+2021-01-07 19:27:20,081 Average window size: 10  reward: 9.227
+2021-01-07 19:28:40,165 update: 17	fps: 53.330	
+2021-01-07 19:28:40,166 update: 17	env-time: 973.517s	pth-time: 406.508s	frames: 73728
+2021-01-07 19:28:40,166 Average window size: 10  reward: 9.645
+2021-01-07 19:30:02,064 update: 18	fps: 53.144	
+2021-01-07 19:30:02,065 update: 18	env-time: 1025.259s	pth-time: 436.551s	frames: 77824
+2021-01-07 19:30:02,065 Average window size: 10  reward: 10.187
+2021-01-07 19:31:18,209 update: 19	fps: 53.176	
+2021-01-07 19:31:18,210 update: 19	env-time: 1073.616s	pth-time: 464.218s	frames: 81920
+2021-01-07 19:31:18,210 Average window size: 10  reward: 10.624
+2021-01-07 19:32:37,077 update: 20	fps: 53.116	
+2021-01-07 19:32:37,077 update: 20	env-time: 1128.037s	pth-time: 488.538s	frames: 86016
+2021-01-07 19:32:37,077 Average window size: 10  reward: 11.106
+2021-01-07 19:34:04,894 update: 21	fps: 52.783	
+2021-01-07 19:34:04,895 update: 21	env-time: 1186.473s	pth-time: 517.697s	frames: 90112
+2021-01-07 19:34:04,895 Average window size: 10  reward: 11.349
+2021-01-07 19:35:31,784 update: 22	fps: 52.509	
+2021-01-07 19:35:31,785 update: 22	env-time: 1244.509s	pth-time: 546.433s	frames: 94208
+2021-01-07 19:35:31,785 Average window size: 10  reward: 11.557
+2021-01-07 19:36:55,468 update: 23	fps: 52.351	
+2021-01-07 19:36:55,469 update: 23	env-time: 1301.408s	pth-time: 573.073s	frames: 98304
+2021-01-07 19:36:55,469 Average window size: 10  reward: 11.821
+2021-01-07 19:38:27,934 update: 24	fps: 51.973	
+2021-01-07 19:38:27,934 update: 24	env-time: 1362.927s	pth-time: 603.898s	frames: 102400
+2021-01-07 19:38:27,934 Average window size: 10  reward: 11.903
+2021-01-07 19:39:50,850 update: 25	fps: 51.869	
+2021-01-07 19:39:50,851 update: 25	env-time: 1418.414s	pth-time: 631.189s	frames: 106496
+2021-01-07 19:39:50,851 Average window size: 10  reward: 12.006
+2021-01-07 19:41:21,513 update: 26	fps: 51.586	
+2021-01-07 19:41:21,514 update: 26	env-time: 1474.126s	pth-time: 666.017s	frames: 110592
+2021-01-07 19:41:21,514 Average window size: 10  reward: 12.123
+2021-01-07 19:42:51,221 update: 27	fps: 51.348	
+2021-01-07 19:42:51,222 update: 27	env-time: 1530.465s	pth-time: 699.251s	frames: 114688
+2021-01-07 19:42:51,222 Average window size: 10  reward: 12.033
+2021-01-07 19:44:18,659 update: 28	fps: 51.178	
+2021-01-07 19:44:18,659 update: 28	env-time: 1587.315s	pth-time: 729.722s	frames: 118784
+2021-01-07 19:44:18,659 Average window size: 10  reward: 12.061
+2021-01-07 19:45:43,727 update: 29	fps: 51.071	
+2021-01-07 19:45:43,728 update: 29	env-time: 1645.850s	pth-time: 756.127s	frames: 122880
+2021-01-07 19:45:43,728 Average window size: 10  reward: 11.947
+2021-01-07 19:47:14,602 update: 30	fps: 50.853	
+2021-01-07 19:47:14,603 update: 30	env-time: 1708.110s	pth-time: 784.612s	frames: 126976
+2021-01-07 19:47:14,603 Average window size: 10  reward: 11.998
+2021-01-07 19:48:54,014 update: 31	fps: 50.483	
+2021-01-07 19:48:54,014 update: 31	env-time: 1770.935s	pth-time: 820.956s	frames: 131072
+2021-01-07 19:48:54,014 Average window size: 10  reward: 12.037
+2021-01-07 19:50:27,584 update: 32	fps: 50.250	
+2021-01-07 19:50:27,585 update: 32	env-time: 1830.622s	pth-time: 854.730s	frames: 135168
+2021-01-07 19:50:27,585 Average window size: 10  reward: 12.025
+2021-01-07 19:51:55,780 update: 33	fps: 50.129	
+2021-01-07 19:51:55,781 update: 33	env-time: 1891.328s	pth-time: 882.103s	frames: 139264
+2021-01-07 19:51:55,781 Average window size: 10  reward: 11.957
+2021-01-07 19:53:27,012 update: 34	fps: 49.963	
+2021-01-07 19:53:27,012 update: 34	env-time: 1947.030s	pth-time: 917.507s	frames: 143360
+2021-01-07 19:53:27,012 Average window size: 10  reward: 11.911
+2021-01-07 19:54:56,459 update: 35	fps: 49.837	
+2021-01-07 19:54:56,460 update: 35	env-time: 2004.844s	pth-time: 948.997s	frames: 147456
+2021-01-07 19:54:56,460 Average window size: 10  reward: 11.983
+2021-01-07 19:56:26,673 update: 36	fps: 49.705	
+2021-01-07 19:56:26,674 update: 36	env-time: 2066.522s	pth-time: 977.401s	frames: 151552
+2021-01-07 19:56:26,674 Average window size: 10  reward: 12.150
+2021-01-07 19:57:58,663 update: 37	fps: 49.554	
+2021-01-07 19:57:58,664 update: 37	env-time: 2127.840s	pth-time: 1007.945s	frames: 155648
+2021-01-07 19:57:58,664 Average window size: 10  reward: 12.194
+2021-01-07 19:59:21,527 update: 38	fps: 49.551	
+2021-01-07 19:59:21,527 update: 38	env-time: 2186.665s	pth-time: 1031.858s	frames: 159744
+2021-01-07 19:59:21,528 Average window size: 10  reward: 12.280
+2021-01-07 20:00:40,851 update: 39	fps: 49.601	
+2021-01-07 20:00:40,852 update: 39	env-time: 2238.587s	pth-time: 1059.145s	frames: 163840
+2021-01-07 20:00:40,852 Average window size: 10  reward: 12.359
+2021-01-07 20:01:56,528 update: 40	fps: 49.702	
+2021-01-07 20:01:56,528 update: 40	env-time: 2290.004s	pth-time: 1083.269s	frames: 167936
+2021-01-07 20:01:56,529 Average window size: 10  reward: 12.345
+2021-01-07 20:03:28,699 update: 41	fps: 49.562	
+2021-01-07 20:03:28,700 update: 41	env-time: 2353.358s	pth-time: 1111.868s	frames: 172032
+2021-01-07 20:03:28,702 Average window size: 10  reward: 12.364
+2021-01-07 20:04:50,205 update: 42	fps: 49.578	
+2021-01-07 20:04:50,206 update: 42	env-time: 2408.943s	pth-time: 1137.668s	frames: 176128
+2021-01-07 20:04:50,206 Average window size: 10  reward: 12.395
+2021-01-07 20:06:01,806 update: 43	fps: 49.729	
+2021-01-07 20:06:01,807 update: 43	env-time: 2463.418s	pth-time: 1154.669s	frames: 180224
+2021-01-07 20:06:01,807 Average window size: 10  reward: 12.393
+2021-01-07 20:07:24,347 update: 44	fps: 49.726	
+2021-01-07 20:07:24,348 update: 44	env-time: 2520.340s	pth-time: 1180.171s	frames: 184320
+2021-01-07 20:07:24,348 Average window size: 10  reward: 12.343
+2021-01-07 20:08:46,815 update: 45	fps: 49.725	
+2021-01-07 20:08:46,816 update: 45	env-time: 2580.531s	pth-time: 1202.329s	frames: 188416
+2021-01-07 20:08:46,816 Average window size: 10  reward: 12.368
+2021-01-07 20:10:09,295 update: 46	fps: 49.724	
+2021-01-07 20:10:09,296 update: 46	env-time: 2636.055s	pth-time: 1229.175s	frames: 192512
+2021-01-07 20:10:09,296 Average window size: 10  reward: 12.348
+2021-01-07 20:11:30,789 update: 47	fps: 49.735	
+2021-01-07 20:11:30,790 update: 47	env-time: 2690.492s	pth-time: 1256.110s	frames: 196608
+2021-01-07 20:11:30,790 Average window size: 10  reward: 12.277
+2021-01-07 20:12:53,153 update: 48	fps: 49.735	
+2021-01-07 20:12:53,154 update: 48	env-time: 2745.004s	pth-time: 1283.840s	frames: 200704
+2021-01-07 20:12:53,154 Average window size: 10  reward: 12.294
+2021-01-07 20:14:14,427 update: 49	fps: 49.748	
+2021-01-07 20:14:14,428 update: 49	env-time: 2800.245s	pth-time: 1309.740s	frames: 204800
+2021-01-07 20:14:14,428 Average window size: 10  reward: 12.476
+2021-01-07 20:15:33,976 update: 50	fps: 49.781	
+2021-01-07 20:15:33,977 update: 50	env-time: 2852.473s	pth-time: 1336.934s	frames: 208896
+2021-01-07 20:15:33,977 Average window size: 10  reward: 12.502
+2021-01-07 20:16:54,910 update: 51	fps: 49.797	
+2021-01-07 20:16:54,911 update: 51	env-time: 2907.296s	pth-time: 1362.827s	frames: 212992
+2021-01-07 20:16:54,911 Average window size: 10  reward: 12.634
+2021-01-07 20:18:14,164 update: 52	fps: 49.831	
+2021-01-07 20:18:14,164 update: 52	env-time: 2959.831s	pth-time: 1389.420s	frames: 217088
+2021-01-07 20:18:14,165 Average window size: 10  reward: 12.721
+2021-01-07 20:19:25,551 update: 53	fps: 49.953	
+2021-01-07 20:19:25,552 update: 53	env-time: 3010.387s	pth-time: 1410.112s	frames: 221184
+2021-01-07 20:19:25,552 Average window size: 10  reward: 12.775
+2021-01-07 20:20:57,408 update: 54	fps: 49.844	
+2021-01-07 20:20:57,409 update: 54	env-time: 3079.141s	pth-time: 1433.075s	frames: 225280
+2021-01-07 20:20:57,409 Average window size: 10  reward: 12.757
+2021-01-07 20:22:20,265 update: 55	fps: 49.836	
+2021-01-07 20:22:20,266 update: 55	env-time: 3135.645s	pth-time: 1459.301s	frames: 229376
+2021-01-07 20:22:20,266 Average window size: 10  reward: 12.766
+2021-01-07 20:23:37,486 update: 56	fps: 49.889	
+2021-01-07 20:23:37,487 update: 56	env-time: 3183.939s	pth-time: 1488.118s	frames: 233472
+2021-01-07 20:23:37,487 Average window size: 10  reward: 12.794
+2021-01-07 20:24:59,479 update: 57	fps: 49.890	
+2021-01-07 20:24:59,480 update: 57	env-time: 3236.741s	pth-time: 1517.185s	frames: 237568
+2021-01-07 20:24:59,480 Average window size: 10  reward: 12.840
+2021-01-07 20:26:19,536 update: 58	fps: 49.911	
+2021-01-07 20:26:19,537 update: 58	env-time: 3290.380s	pth-time: 1543.486s	frames: 241664
+2021-01-07 20:26:19,537 Average window size: 10  reward: 12.815
+2021-01-07 20:27:35,971 update: 59	fps: 49.968	
+2021-01-07 20:27:35,971 update: 59	env-time: 3339.187s	pth-time: 1570.953s	frames: 245760
+2021-01-07 20:27:35,972 Average window size: 10  reward: 12.829
+2021-01-07 20:28:52,109 update: 60	fps: 50.027	
+2021-01-07 20:28:52,110 update: 60	env-time: 3390.254s	pth-time: 1595.905s	frames: 249856
+2021-01-07 20:28:52,110 Average window size: 10  reward: 12.832
+2021-01-07 20:30:09,289 update: 61	fps: 50.073	
+2021-01-07 20:30:09,290 update: 61	env-time: 3439.041s	pth-time: 1624.054s	frames: 253952
+2021-01-07 20:30:09,290 Average window size: 10  reward: 12.927
+2021-01-07 20:31:30,015 update: 62	fps: 50.084	
+2021-01-07 20:31:30,016 update: 62	env-time: 3490.087s	pth-time: 1653.606s	frames: 258048
+2021-01-07 20:31:30,016 Average window size: 10  reward: 12.988
+2021-01-07 20:32:54,828 update: 63	fps: 50.055	
+2021-01-07 20:32:54,829 update: 63	env-time: 3549.762s	pth-time: 1678.629s	frames: 262144
+2021-01-07 20:32:54,829 Average window size: 10  reward: 12.987
+2021-01-07 20:34:11,730 update: 64	fps: 50.101	
+2021-01-07 20:34:11,731 update: 64	env-time: 3601.171s	pth-time: 1703.997s	frames: 266240
+2021-01-07 20:34:11,731 Average window size: 10  reward: 12.977
+2021-01-07 20:35:29,408 update: 65	fps: 50.139	
+2021-01-07 20:35:29,409 update: 65	env-time: 3651.010s	pth-time: 1731.711s	frames: 270336
+2021-01-07 20:35:29,409 Average window size: 10  reward: 13.104
+2021-01-07 20:36:44,681 update: 66	fps: 50.198	
+2021-01-07 20:36:44,682 update: 66	env-time: 3697.463s	pth-time: 1760.400s	frames: 274432
+2021-01-07 20:36:44,682 Average window size: 10  reward: 13.158
+2021-01-07 20:38:06,703 update: 67	fps: 50.194	
+2021-01-07 20:38:06,704 update: 67	env-time: 3750.846s	pth-time: 1788.910s	frames: 278528
+2021-01-07 20:38:06,704 Average window size: 10  reward: 13.086
+2021-01-07 20:39:28,430 update: 68	fps: 50.193	
+2021-01-07 20:39:28,431 update: 68	env-time: 3804.172s	pth-time: 1817.186s	frames: 282624
+2021-01-07 20:39:28,431 Average window size: 10  reward: 13.046
+2021-01-07 20:40:47,254 update: 69	fps: 50.217	
+2021-01-07 20:40:47,255 update: 69	env-time: 3856.255s	pth-time: 1843.810s	frames: 286720
+2021-01-07 20:40:47,256 Average window size: 10  reward: 13.143
+2021-01-07 20:42:08,653 update: 70	fps: 50.219	
+2021-01-07 20:42:08,653 update: 70	env-time: 3909.914s	pth-time: 1871.431s	frames: 290816
+2021-01-07 20:42:08,653 Average window size: 10  reward: 13.084
+2021-01-07 20:43:29,092 update: 71	fps: 50.228	
+2021-01-07 20:43:29,093 update: 71	env-time: 3960.646s	pth-time: 1900.906s	frames: 294912
+2021-01-07 20:43:29,093 Average window size: 10  reward: 13.077
+2021-01-07 20:44:50,286 update: 72	fps: 50.231	
+2021-01-07 20:44:50,287 update: 72	env-time: 4013.228s	pth-time: 1929.370s	frames: 299008
+2021-01-07 20:44:50,287 Average window size: 10  reward: 13.079
+2021-01-07 20:46:10,090 update: 73	fps: 50.246	
+2021-01-07 20:46:10,091 update: 73	env-time: 4063.794s	pth-time: 1958.451s	frames: 303104
+2021-01-07 20:46:10,091 Average window size: 10  reward: 13.133
+2021-01-07 20:47:28,004 update: 74	fps: 50.275	
+2021-01-07 20:47:28,005 update: 74	env-time: 4114.512s	pth-time: 1985.507s	frames: 307200
+2021-01-07 20:47:28,005 Average window size: 10  reward: 13.026
+2021-01-07 20:48:49,639 update: 75	fps: 50.274	
+2021-01-07 20:48:49,640 update: 75	env-time: 4167.384s	pth-time: 2014.129s	frames: 311296
+2021-01-07 20:48:49,640 Average window size: 10  reward: 12.876
+2021-01-07 20:50:09,066 update: 76	fps: 50.291	
+2021-01-07 20:50:09,067 update: 76	env-time: 4219.776s	pth-time: 2041.022s	frames: 315392
+2021-01-07 20:50:09,067 Average window size: 10  reward: 12.782
+2021-01-07 20:51:27,445 update: 77	fps: 50.315	
+2021-01-07 20:51:27,445 update: 77	env-time: 4268.235s	pth-time: 2070.812s	frames: 319488
+2021-01-07 20:51:27,445 Average window size: 10  reward: 12.816
+2021-01-07 20:52:44,397 update: 78	fps: 50.350	
+2021-01-07 20:52:44,398 update: 78	env-time: 4317.482s	pth-time: 2098.406s	frames: 323584
+2021-01-07 20:52:44,398 Average window size: 10  reward: 12.605
+2021-01-07 20:54:05,379 update: 79	fps: 50.353	
+2021-01-07 20:54:05,379 update: 79	env-time: 4372.765s	pth-time: 2123.978s	frames: 327680
+2021-01-07 20:54:05,379 Average window size: 10  reward: 12.477
+2021-01-07 20:55:21,205 update: 80	fps: 50.395	
+2021-01-07 20:55:21,206 update: 80	env-time: 4426.942s	pth-time: 2145.508s	frames: 331776
+2021-01-07 20:55:21,206 Average window size: 10  reward: 12.425
+2021-01-07 20:56:40,685 update: 81	fps: 50.408	
+2021-01-07 20:56:40,686 update: 81	env-time: 4479.177s	pth-time: 2172.543s	frames: 335872
+2021-01-07 20:56:40,686 Average window size: 10  reward: 12.532
+2021-01-07 20:57:59,000 update: 82	fps: 50.430	
+2021-01-07 20:57:59,001 update: 82	env-time: 4532.006s	pth-time: 2197.869s	frames: 339968
+2021-01-07 20:57:59,001 Average window size: 10  reward: 12.480
+2021-01-07 20:59:12,482 update: 83	fps: 50.488	
+2021-01-07 20:59:12,483 update: 83	env-time: 4579.192s	pth-time: 2224.009s	frames: 344064
+2021-01-07 20:59:12,483 Average window size: 10  reward: 12.538
+2021-01-07 21:00:32,017 update: 84	fps: 50.499	
+2021-01-07 21:00:32,018 update: 84	env-time: 4629.515s	pth-time: 2253.090s	frames: 348160
+2021-01-07 21:00:32,018 Average window size: 10  reward: 12.647
+2021-01-07 21:01:55,116 update: 85	fps: 50.485	
+2021-01-07 21:01:55,117 update: 85	env-time: 4682.814s	pth-time: 2282.748s	frames: 352256
+2021-01-07 21:01:55,117 Average window size: 10  reward: 12.752
+2021-01-07 21:03:16,829 update: 86	fps: 50.481	
+2021-01-07 21:03:16,830 update: 86	env-time: 4733.738s	pth-time: 2313.424s	frames: 356352
+2021-01-07 21:03:16,830 Average window size: 10  reward: 12.793
+2021-01-07 21:04:42,016 update: 87	fps: 50.452	
+2021-01-07 21:04:42,016 update: 87	env-time: 4791.511s	pth-time: 2340.724s	frames: 360448
+2021-01-07 21:04:42,016 Average window size: 10  reward: 12.896
+2021-01-07 21:05:53,958 update: 88	fps: 50.517	
+2021-01-07 21:05:53,959 update: 88	env-time: 4838.971s	pth-time: 2365.081s	frames: 364544
+2021-01-07 21:05:53,959 Average window size: 10  reward: 12.933
+2021-01-07 21:07:09,947 update: 89	fps: 50.552	
+2021-01-07 21:07:09,948 update: 89	env-time: 4888.857s	pth-time: 2391.060s	frames: 368640
+2021-01-07 21:07:09,948 Average window size: 10  reward: 12.810
+2021-01-07 21:08:26,711 update: 90	fps: 50.581	
+2021-01-07 21:08:26,712 update: 90	env-time: 4939.930s	pth-time: 2416.621s	frames: 372736
+2021-01-07 21:08:26,712 Average window size: 10  reward: 12.711
+2021-01-07 21:09:41,530 update: 91	fps: 50.623	
+2021-01-07 21:09:41,531 update: 91	env-time: 4989.694s	pth-time: 2441.445s	frames: 376832
+2021-01-07 21:09:41,531 Average window size: 10  reward: 12.692
+2021-01-07 21:10:51,402 update: 92	fps: 50.698	
+2021-01-07 21:10:51,402 update: 92	env-time: 5036.087s	pth-time: 2464.802s	frames: 380928
+2021-01-07 21:10:51,403 Average window size: 10  reward: 12.685
+2021-01-07 21:12:06,346 update: 93	fps: 50.737	
+2021-01-07 21:12:06,347 update: 93	env-time: 5086.273s	pth-time: 2489.408s	frames: 385024
+2021-01-07 21:12:06,347 Average window size: 10  reward: 12.666
+2021-01-07 21:13:23,649 update: 94	fps: 50.759	
+2021-01-07 21:13:23,650 update: 94	env-time: 5139.711s	pth-time: 2513.151s	frames: 389120
+2021-01-07 21:13:23,650 Average window size: 10  reward: 12.668
+2021-01-07 21:14:46,518 update: 95	fps: 50.745	
+2021-01-07 21:14:46,519 update: 95	env-time: 5195.228s	pth-time: 2540.373s	frames: 393216
+2021-01-07 21:14:46,519 Average window size: 10  reward: 12.534
+2021-01-07 21:16:06,145 update: 96	fps: 50.752	
+2021-01-07 21:16:06,146 update: 96	env-time: 5250.767s	pth-time: 2564.333s	frames: 397312
+2021-01-07 21:16:06,146 Average window size: 10  reward: 12.546
+2021-01-07 21:17:19,224 update: 97	fps: 50.801	
+2021-01-07 21:17:19,224 update: 97	env-time: 5302.687s	pth-time: 2585.364s	frames: 401408
+2021-01-07 21:17:19,224 Average window size: 10  reward: 12.611
+2021-01-07 21:18:33,874 update: 98	fps: 50.839	
+2021-01-07 21:18:33,875 update: 98	env-time: 5352.262s	pth-time: 2610.330s	frames: 405504
+2021-01-07 21:18:33,875 Average window size: 10  reward: 12.716
+2021-01-07 21:19:51,815 update: 99	fps: 50.856	
+2021-01-07 21:19:51,816 update: 99	env-time: 5403.664s	pth-time: 2636.736s	frames: 409600
+2021-01-07 21:19:51,816 Average window size: 10  reward: 12.620
+2021-01-07 21:21:19,653 update: 100	fps: 50.810	
+2021-01-07 21:21:19,654 update: 100	env-time: 5466.729s	pth-time: 2661.394s	frames: 413696
+2021-01-07 21:21:19,654 Average window size: 10  reward: 12.729
+2021-01-07 21:22:43,797 update: 101	fps: 50.788	
+2021-01-07 21:22:43,798 update: 101	env-time: 5522.638s	pth-time: 2689.410s	frames: 417792
+2021-01-07 21:22:43,798 Average window size: 10  reward: 12.761
+2021-01-07 21:24:00,506 update: 102	fps: 50.812	
+2021-01-07 21:24:00,507 update: 102	env-time: 5575.187s	pth-time: 2713.456s	frames: 421888
+2021-01-07 21:24:00,507 Average window size: 10  reward: 12.719
+2021-01-07 21:25:19,697 update: 103	fps: 50.821	
+2021-01-07 21:25:19,698 update: 103	env-time: 5630.096s	pth-time: 2737.628s	frames: 425984
+2021-01-07 21:25:19,698 Average window size: 10  reward: 12.644
+2021-01-07 21:26:34,889 update: 104	fps: 50.854	
+2021-01-07 21:26:34,890 update: 104	env-time: 5681.344s	pth-time: 2761.441s	frames: 430080
+2021-01-07 21:26:34,890 Average window size: 10  reward: 12.614
+2021-01-07 21:27:55,545 update: 105	fps: 50.853	
+2021-01-07 21:27:55,546 update: 105	env-time: 5733.015s	pth-time: 2790.301s	frames: 434176
+2021-01-07 21:27:55,546 Average window size: 10  reward: 12.653
+2021-01-07 21:29:10,093 update: 106	fps: 50.888	
+2021-01-07 21:29:10,094 update: 106	env-time: 5785.207s	pth-time: 2812.522s	frames: 438272
+2021-01-07 21:29:10,094 Average window size: 10  reward: 12.607
+2021-01-07 21:30:27,669 update: 107	fps: 50.905	
+2021-01-07 21:30:27,670 update: 107	env-time: 5837.851s	pth-time: 2837.344s	frames: 442368
+2021-01-07 21:30:27,670 Average window size: 10  reward: 12.626
+2021-01-07 21:31:45,387 update: 108	fps: 50.921	
+2021-01-07 21:31:45,388 update: 108	env-time: 5890.292s	pth-time: 2862.495s	frames: 446464
+2021-01-07 21:31:45,388 Average window size: 10  reward: 12.719
+2021-01-07 21:32:59,793 update: 109	fps: 50.956	
+2021-01-07 21:32:59,794 update: 109	env-time: 5942.230s	pth-time: 2884.832s	frames: 450560
+2021-01-07 21:32:59,794 Average window size: 10  reward: 12.636
+2021-01-07 21:34:15,798 update: 110	fps: 50.981	
+2021-01-07 21:34:15,798 update: 110	env-time: 5993.027s	pth-time: 2909.918s	frames: 454656
+2021-01-07 21:34:15,798 Average window size: 10  reward: 12.676
+2021-01-07 21:35:29,934 update: 111	fps: 51.016	
+2021-01-07 21:35:29,935 update: 111	env-time: 6045.405s	pth-time: 2931.439s	frames: 458752
+2021-01-07 21:35:29,935 Average window size: 10  reward: 12.758
+2021-01-07 21:36:49,410 update: 112	fps: 51.021	
+2021-01-07 21:36:49,410 update: 112	env-time: 6098.555s	pth-time: 2957.648s	frames: 462848
+2021-01-07 21:36:49,410 Average window size: 10  reward: 12.868
+2021-01-07 21:38:00,856 update: 113	fps: 51.070	
+2021-01-07 21:38:00,857 update: 113	env-time: 6149.137s	pth-time: 2978.401s	frames: 466944
+2021-01-07 21:38:00,857 Average window size: 10  reward: 12.964
+2021-01-07 21:39:11,065 update: 114	fps: 51.126	
+2021-01-07 21:39:11,066 update: 114	env-time: 6195.233s	pth-time: 3002.393s	frames: 471040
+2021-01-07 21:39:11,066 Average window size: 10  reward: 13.015
+2021-01-07 21:40:22,921 update: 115	fps: 51.171	
+2021-01-07 21:40:22,922 update: 115	env-time: 6244.165s	pth-time: 3025.181s	frames: 475136
+2021-01-07 21:40:22,922 Average window size: 10  reward: 13.017
+2021-01-07 21:41:34,530 update: 116	fps: 51.217	
+2021-01-07 21:41:34,531 update: 116	env-time: 6295.666s	pth-time: 3045.161s	frames: 479232
+2021-01-07 21:41:34,531 Average window size: 10  reward: 12.974
+2021-01-07 21:42:47,213 update: 117	fps: 51.257	
+2021-01-07 21:42:47,214 update: 117	env-time: 6345.791s	pth-time: 3067.586s	frames: 483328
+2021-01-07 21:42:47,214 Average window size: 10  reward: 12.985
+2021-01-07 21:44:01,384 update: 118	fps: 51.288	
+2021-01-07 21:44:01,385 update: 118	env-time: 6396.477s	pth-time: 3090.934s	frames: 487424
+2021-01-07 21:44:01,386 Average window size: 10  reward: 12.944
+2021-01-07 21:45:16,607 update: 119	fps: 51.313	
+2021-01-07 21:45:16,608 update: 119	env-time: 6446.181s	pth-time: 3116.313s	frames: 491520
+2021-01-07 21:45:16,608 Average window size: 10  reward: 12.897
+2021-01-07 21:46:27,912 update: 120	fps: 51.358	
+2021-01-07 21:46:27,913 update: 120	env-time: 6494.535s	pth-time: 3139.142s	frames: 495616
+2021-01-07 21:46:27,913 Average window size: 10  reward: 12.844
+2021-01-07 21:47:46,649 update: 121	fps: 51.363	
+2021-01-07 21:47:46,650 update: 121	env-time: 6549.602s	pth-time: 3162.365s	frames: 499712
+2021-01-07 21:47:46,650 Average window size: 10  reward: 12.884
+2021-01-07 21:49:06,580 update: 122	fps: 51.362	
+2021-01-07 21:49:06,581 update: 122	env-time: 6603.831s	pth-time: 3187.930s	frames: 503808
+2021-01-07 21:49:06,581 Average window size: 10  reward: 12.828
+2021-01-07 21:50:32,315 update: 123	fps: 51.331	
+2021-01-07 21:50:32,316 update: 123	env-time: 6663.953s	pth-time: 3213.417s	frames: 507904
+2021-01-07 21:50:32,316 Average window size: 10  reward: 12.713
+2021-01-07 21:51:47,240 update: 124	fps: 51.356	
+2021-01-07 21:51:47,241 update: 124	env-time: 6715.320s	pth-time: 3236.840s	frames: 512000
+2021-01-07 21:51:47,241 Average window size: 10  reward: 12.709
+2021-01-07 21:52:58,155 update: 125	fps: 51.401	
+2021-01-07 21:52:58,156 update: 125	env-time: 6761.506s	pth-time: 3261.450s	frames: 516096
+2021-01-07 21:52:58,156 Average window size: 10  reward: 12.766
+2021-01-07 21:54:15,762 update: 126	fps: 51.412	
+2021-01-07 21:54:15,763 update: 126	env-time: 6813.720s	pth-time: 3286.728s	frames: 520192
+2021-01-07 21:54:15,763 Average window size: 10  reward: 12.728
+2021-01-07 21:55:34,946 update: 127	fps: 51.414	
+2021-01-07 21:55:34,948 update: 127	env-time: 6869.387s	pth-time: 3310.127s	frames: 524288
+2021-01-07 21:55:34,949 Average window size: 10  reward: 12.757
+2021-01-07 21:56:47,984 update: 128	fps: 51.448	
+2021-01-07 21:56:47,984 update: 128	env-time: 6918.961s	pth-time: 3333.468s	frames: 528384
+2021-01-07 21:56:47,985 Average window size: 10  reward: 12.722
+2021-01-07 21:58:04,369 update: 129	fps: 51.464	
+2021-01-07 21:58:04,370 update: 129	env-time: 6974.326s	pth-time: 3354.368s	frames: 532480
+2021-01-07 21:58:04,370 Average window size: 10  reward: 12.743
+2021-01-07 21:59:14,149 update: 130	fps: 51.512	
+2021-01-07 21:59:14,150 update: 130	env-time: 7023.649s	pth-time: 3374.695s	frames: 536576
+2021-01-07 21:59:14,150 Average window size: 10  reward: 12.679
+2021-01-07 22:00:28,618 update: 131	fps: 51.537	
+2021-01-07 22:00:28,619 update: 131	env-time: 7073.522s	pth-time: 3399.044s	frames: 540672
+2021-01-07 22:00:28,619 Average window size: 10  reward: 12.798
+2021-01-07 22:01:41,773 update: 132	fps: 51.568	
+2021-01-07 22:01:41,774 update: 132	env-time: 7122.452s	pth-time: 3423.152s	frames: 544768
+2021-01-07 22:01:41,774 Average window size: 10  reward: 12.838
+2021-01-07 22:03:00,817 update: 133	fps: 51.570	
+2021-01-07 22:03:00,818 update: 133	env-time: 7174.932s	pth-time: 3449.593s	frames: 548864
+2021-01-07 22:03:00,818 Average window size: 10  reward: 12.911
+2021-01-07 22:04:12,164 update: 134	fps: 51.609	
+2021-01-07 22:04:12,165 update: 134	env-time: 7223.522s	pth-time: 3472.240s	frames: 552960
+2021-01-07 22:04:12,165 Average window size: 10  reward: 12.928
+2021-01-07 22:05:26,423 update: 135	fps: 51.633	
+2021-01-07 22:05:26,424 update: 135	env-time: 7276.640s	pth-time: 3493.237s	frames: 557056
+2021-01-07 22:05:26,425 Average window size: 10  reward: 12.932
+2021-01-07 22:06:41,357 update: 136	fps: 51.654	
+2021-01-07 22:06:41,358 update: 136	env-time: 7326.652s	pth-time: 3518.020s	frames: 561152
+2021-01-07 22:06:41,358 Average window size: 10  reward: 12.902
+2021-01-07 22:07:56,155 update: 137	fps: 51.675	
+2021-01-07 22:07:56,156 update: 137	env-time: 7379.138s	pth-time: 3540.186s	frames: 565248
+2021-01-07 22:07:56,156 Average window size: 10  reward: 12.884
+2021-01-07 22:09:12,978 update: 138	fps: 51.687	
+2021-01-07 22:09:12,979 update: 138	env-time: 7430.232s	pth-time: 3565.781s	frames: 569344
+2021-01-07 22:09:12,979 Average window size: 10  reward: 12.855
+2021-01-07 22:10:29,193 update: 139	fps: 51.701	
+2021-01-07 22:10:29,194 update: 139	env-time: 7479.762s	pth-time: 3592.337s	frames: 573440
+2021-01-07 22:10:29,194 Average window size: 10  reward: 12.740
+2021-01-07 22:11:42,224 update: 140	fps: 51.729	
+2021-01-07 22:11:42,224 update: 140	env-time: 7529.714s	pth-time: 3615.300s	frames: 577536
+2021-01-07 22:11:42,224 Average window size: 10  reward: 12.727
+2021-01-07 22:12:55,457 update: 141	fps: 51.757	
+2021-01-07 22:12:55,458 update: 141	env-time: 7579.419s	pth-time: 3638.614s	frames: 581632
+2021-01-07 22:12:55,458 Average window size: 10  reward: 12.751
+2021-01-07 22:14:05,796 update: 142	fps: 51.797	
+2021-01-07 22:14:05,797 update: 142	env-time: 7624.525s	pth-time: 3663.737s	frames: 585728
+2021-01-07 22:14:05,797 Average window size: 10  reward: 12.617
+2021-01-07 22:15:24,078 update: 143	fps: 51.801	
+2021-01-07 22:15:24,079 update: 143	env-time: 7674.133s	pth-time: 3692.285s	frames: 589824
+2021-01-07 22:15:24,079 Average window size: 10  reward: 12.571
+2021-01-07 22:16:33,854 update: 144	fps: 51.843	
+2021-01-07 22:16:33,855 update: 144	env-time: 7717.762s	pth-time: 3718.302s	frames: 593920
+2021-01-07 22:16:33,855 Average window size: 10  reward: 12.539
+2021-01-07 22:17:51,926 update: 145	fps: 51.847	
+2021-01-07 22:17:51,927 update: 145	env-time: 7768.735s	pth-time: 3745.279s	frames: 598016
+2021-01-07 22:17:51,927 Average window size: 10  reward: 12.421
+2021-01-07 22:19:06,800 update: 146	fps: 51.865	
+2021-01-07 22:19:06,801 update: 146	env-time: 7818.245s	pth-time: 3770.515s	frames: 602112
+2021-01-07 22:19:06,801 Average window size: 10  reward: 12.378
+2021-01-07 22:20:22,413 update: 147	fps: 51.880	
+2021-01-07 22:20:22,414 update: 147	env-time: 7869.394s	pth-time: 3794.847s	frames: 606208
+2021-01-07 22:20:22,414 Average window size: 10  reward: 12.393
+2021-01-07 22:21:34,322 update: 148	fps: 51.911	
+2021-01-07 22:21:34,322 update: 148	env-time: 7919.383s	pth-time: 3816.651s	frames: 610304
+2021-01-07 22:21:34,322 Average window size: 10  reward: 12.618
+2021-01-07 22:22:46,381 update: 149	fps: 51.941	
+2021-01-07 22:22:46,382 update: 149	env-time: 7970.250s	pth-time: 3837.714s	frames: 614400
+2021-01-07 22:22:46,382 Average window size: 10  reward: 12.591
+2021-01-07 22:23:57,530 update: 150	fps: 51.975	
+2021-01-07 22:23:57,531 update: 150	env-time: 8015.580s	pth-time: 3863.404s	frames: 618496
+2021-01-07 22:23:57,531 Average window size: 10  reward: 12.612
+2021-01-07 22:25:16,290 update: 151	fps: 51.975	
+2021-01-07 22:25:16,291 update: 151	env-time: 8066.953s	pth-time: 3890.546s	frames: 622592
+2021-01-07 22:25:16,291 Average window size: 10  reward: 12.709
+2021-01-07 22:26:30,325 update: 152	fps: 51.996	
+2021-01-07 22:26:30,326 update: 152	env-time: 8116.374s	pth-time: 3915.029s	frames: 626688
+2021-01-07 22:26:30,326 Average window size: 10  reward: 12.744
+2021-01-07 22:27:41,913 update: 153	fps: 52.027	
+2021-01-07 22:27:41,914 update: 153	env-time: 8165.131s	pth-time: 3937.727s	frames: 630784
+2021-01-07 22:27:41,914 Average window size: 10  reward: 12.743
+2021-01-07 22:28:56,444 update: 154	fps: 52.045	
+2021-01-07 22:28:56,445 update: 154	env-time: 8216.964s	pth-time: 3960.278s	frames: 634880
+2021-01-07 22:28:56,445 Average window size: 10  reward: 12.949
+2021-01-07 22:30:08,876 update: 155	fps: 52.071	
+2021-01-07 22:30:08,878 update: 155	env-time: 8265.139s	pth-time: 3984.420s	frames: 638976
+2021-01-07 22:30:08,879 Average window size: 10  reward: 13.022
+2021-01-07 22:31:23,222 update: 156	fps: 52.089	
+2021-01-07 22:31:23,223 update: 156	env-time: 8314.307s	pth-time: 4009.483s	frames: 643072
+2021-01-07 22:31:23,223 Average window size: 10  reward: 12.986
+2021-01-07 22:32:35,604 update: 157	fps: 52.116	
+2021-01-07 22:32:35,605 update: 157	env-time: 8362.689s	pth-time: 4033.361s	frames: 647168
+2021-01-07 22:32:35,605 Average window size: 10  reward: 12.881
+2021-01-07 22:33:49,994 update: 158	fps: 52.133	
+2021-01-07 22:33:49,995 update: 158	env-time: 8413.050s	pth-time: 4057.272s	frames: 651264
+2021-01-07 22:33:49,995 Average window size: 10  reward: 12.841
+2021-01-07 22:35:03,021 update: 159	fps: 52.156	
+2021-01-07 22:35:03,022 update: 159	env-time: 8462.525s	pth-time: 4080.709s	frames: 655360
+2021-01-07 22:35:03,022 Average window size: 10  reward: 12.668
+2021-01-07 22:36:15,587 update: 160	fps: 52.181	
+2021-01-07 22:36:15,588 update: 160	env-time: 8509.858s	pth-time: 4105.819s	frames: 659456
+2021-01-07 22:36:15,588 Average window size: 10  reward: 12.638
+2021-01-07 22:37:25,535 update: 161	fps: 52.216	
+2021-01-07 22:37:25,535 update: 161	env-time: 8557.459s	pth-time: 4127.939s	frames: 663552
+2021-01-07 22:37:25,536 Average window size: 10  reward: 12.607
+2021-01-07 22:38:35,429 update: 162	fps: 52.251	
+2021-01-07 22:38:35,430 update: 162	env-time: 8602.948s	pth-time: 4152.206s	frames: 667648
+2021-01-07 22:38:35,430 Average window size: 10  reward: 12.534
+2021-01-07 22:39:47,338 update: 163	fps: 52.277	
+2021-01-07 22:39:47,339 update: 163	env-time: 8652.694s	pth-time: 4174.212s	frames: 671744
+2021-01-07 22:39:47,339 Average window size: 10  reward: 12.428
+2021-01-07 22:41:08,233 update: 164	fps: 52.267	
+2021-01-07 22:41:08,233 update: 164	env-time: 8708.136s	pth-time: 4199.550s	frames: 675840
+2021-01-07 22:41:08,233 Average window size: 10  reward: 12.382
+2021-01-07 22:42:21,523 update: 165	fps: 52.287	
+2021-01-07 22:42:21,523 update: 165	env-time: 8757.005s	pth-time: 4223.838s	frames: 679936
+2021-01-07 22:42:21,523 Average window size: 10  reward: 12.455
+2021-01-07 22:43:34,509 update: 166	fps: 52.309	
+2021-01-07 22:43:34,510 update: 166	env-time: 8808.117s	pth-time: 4245.595s	frames: 684032
+2021-01-07 22:43:34,510 Average window size: 10  reward: 12.406
+2021-01-07 22:44:50,929 update: 167	fps: 52.316	
+2021-01-07 22:44:50,930 update: 167	env-time: 8861.028s	pth-time: 4268.976s	frames: 688128
+2021-01-07 22:44:50,930 Average window size: 10  reward: 12.247
+2021-01-07 22:46:07,133 update: 168	fps: 52.324	
+2021-01-07 22:46:07,133 update: 168	env-time: 8912.336s	pth-time: 4293.744s	frames: 692224
+2021-01-07 22:46:07,133 Average window size: 10  reward: 12.308
+2021-01-07 22:47:18,079 update: 169	fps: 52.353	
+2021-01-07 22:47:18,080 update: 169	env-time: 8961.346s	pth-time: 4315.559s	frames: 696320
+2021-01-07 22:47:18,080 Average window size: 10  reward: 12.237
+2021-01-07 22:48:33,345 update: 170	fps: 52.365	
+2021-01-07 22:48:33,345 update: 170	env-time: 9015.164s	pth-time: 4336.896s	frames: 700416
+2021-01-07 22:48:33,346 Average window size: 10  reward: 12.189
+2021-01-07 22:49:43,673 update: 171	fps: 52.396	
+2021-01-07 22:49:43,674 update: 171	env-time: 9064.066s	pth-time: 4358.098s	frames: 704512
+2021-01-07 22:49:43,674 Average window size: 10  reward: 12.306
+2021-01-07 22:50:54,872 update: 172	fps: 52.423	
+2021-01-07 22:50:54,872 update: 172	env-time: 9111.836s	pth-time: 4381.404s	frames: 708608
+2021-01-07 22:50:54,873 Average window size: 10  reward: 12.376
+2021-01-07 22:52:17,768 update: 173	fps: 52.404	
+2021-01-07 22:52:17,769 update: 173	env-time: 9168.834s	pth-time: 4407.167s	frames: 712704
+2021-01-07 22:52:17,771 Average window size: 10  reward: 12.452
+2021-01-07 22:53:36,749 update: 174	fps: 52.401	
+2021-01-07 22:53:36,750 update: 174	env-time: 9223.740s	pth-time: 4431.097s	frames: 716800
+2021-01-07 22:53:36,750 Average window size: 10  reward: 12.329
+2021-01-07 22:54:52,811 update: 175	fps: 52.409	
+2021-01-07 22:54:52,812 update: 175	env-time: 9277.718s	pth-time: 4453.043s	frames: 720896
+2021-01-07 22:54:52,812 Average window size: 10  reward: 12.415
+2021-01-07 22:55:59,952 update: 176	fps: 52.451	
+2021-01-07 22:55:59,952 update: 176	env-time: 9325.260s	pth-time: 4472.517s	frames: 724992
+2021-01-07 22:55:59,953 Average window size: 10  reward: 12.615
+2021-01-07 22:57:15,267 update: 177	fps: 52.461	
+2021-01-07 22:57:15,268 update: 177	env-time: 9377.523s	pth-time: 4495.460s	frames: 729088
+2021-01-07 22:57:15,268 Average window size: 10  reward: 12.691
+2021-01-07 22:58:25,662 update: 178	fps: 52.490	
+2021-01-07 22:58:25,662 update: 178	env-time: 9422.720s	pth-time: 4520.519s	frames: 733184
+2021-01-07 22:58:25,663 Average window size: 10  reward: 12.761
+2021-01-07 22:59:39,105 update: 179	fps: 52.507	
+2021-01-07 22:59:39,106 update: 179	env-time: 9473.223s	pth-time: 4543.332s	frames: 737280
+2021-01-07 22:59:39,106 Average window size: 10  reward: 12.764
+2021-01-07 23:00:50,562 update: 180	fps: 52.532	
+2021-01-07 23:00:50,563 update: 180	env-time: 9520.016s	pth-time: 4567.874s	frames: 741376
+2021-01-07 23:00:50,563 Average window size: 10  reward: 12.785
+2021-01-07 23:02:01,011 update: 181	fps: 52.560	
+2021-01-07 23:02:01,012 update: 181	env-time: 9569.103s	pth-time: 4588.997s	frames: 745472
+2021-01-07 23:02:01,012 Average window size: 10  reward: 12.902
+2021-01-07 23:03:13,830 update: 182	fps: 52.579	
+2021-01-07 23:03:13,831 update: 182	env-time: 9616.282s	pth-time: 4614.517s	frames: 749568
+2021-01-07 23:03:13,831 Average window size: 10  reward: 12.952
+2021-01-07 23:04:25,738 update: 183	fps: 52.601	
+2021-01-07 23:04:25,739 update: 183	env-time: 9664.900s	pth-time: 4637.680s	frames: 753664
+2021-01-07 23:04:25,739 Average window size: 10  reward: 13.015
+2021-01-07 23:05:36,231 update: 184	fps: 52.627	
+2021-01-07 23:05:36,231 update: 184	env-time: 9713.122s	pth-time: 4659.837s	frames: 757760
+2021-01-07 23:05:36,231 Average window size: 10  reward: 12.913
+2021-01-07 23:06:46,738 update: 185	fps: 52.654	
+2021-01-07 23:06:46,744 update: 185	env-time: 9759.773s	pth-time: 4683.577s	frames: 761856
+2021-01-07 23:06:46,744 Average window size: 10  reward: 12.946
+2021-01-07 23:08:01,791 update: 186	fps: 52.664	
+2021-01-07 23:08:01,791 update: 186	env-time: 9808.984s	pth-time: 4709.296s	frames: 765952
+2021-01-07 23:08:01,791 Average window size: 10  reward: 12.954
+2021-01-07 23:09:17,003 update: 187	fps: 52.673	
+2021-01-07 23:09:17,004 update: 187	env-time: 9857.820s	pth-time: 4735.560s	frames: 770048
+2021-01-07 23:09:17,004 Average window size: 10  reward: 12.860
+2021-01-07 23:10:32,854 update: 188	fps: 52.680	
+2021-01-07 23:10:32,855 update: 188	env-time: 9907.149s	pth-time: 4761.960s	frames: 774144
+2021-01-07 23:10:32,855 Average window size: 10  reward: 12.818
+2021-01-07 23:11:43,910 update: 189	fps: 52.704	
+2021-01-07 23:11:43,911 update: 189	env-time: 9955.167s	pth-time: 4784.880s	frames: 778240
+2021-01-07 23:11:43,911 Average window size: 10  reward: 12.816
+2021-01-07 23:12:57,287 update: 190	fps: 52.719	
+2021-01-07 23:12:57,289 update: 190	env-time: 10006.566s	pth-time: 4806.732s	frames: 782336
+2021-01-07 23:12:57,289 Average window size: 10  reward: 12.731
+2021-01-07 23:14:13,862 update: 191	fps: 52.723	
+2021-01-07 23:14:13,863 update: 191	env-time: 10053.710s	pth-time: 4835.903s	frames: 786432
+2021-01-07 23:14:13,863 Average window size: 10  reward: 12.637
+2021-01-07 23:15:25,961 update: 192	fps: 52.743	
+2021-01-07 23:15:25,962 update: 192	env-time: 10101.572s	pth-time: 4860.004s	frames: 790528
+2021-01-07 23:15:25,962 Average window size: 10  reward: 12.579
+2021-01-07 23:16:41,116 update: 193	fps: 52.752	
+2021-01-07 23:16:41,117 update: 193	env-time: 10150.510s	pth-time: 4886.095s	frames: 794624
+2021-01-07 23:16:41,117 Average window size: 10  reward: 12.653
+2021-01-07 23:17:54,736 update: 194	fps: 52.766	
+2021-01-07 23:17:54,737 update: 194	env-time: 10200.188s	pth-time: 4909.913s	frames: 798720
+2021-01-07 23:17:54,737 Average window size: 10  reward: 12.580
+2021-01-07 23:19:07,553 update: 195	fps: 52.783	
+2021-01-07 23:19:07,554 update: 195	env-time: 10245.255s	pth-time: 4937.546s	frames: 802816
+2021-01-07 23:19:07,554 Average window size: 10  reward: 12.555
+2021-01-07 23:20:24,754 update: 196	fps: 52.784	
+2021-01-07 23:20:24,754 update: 196	env-time: 10297.347s	pth-time: 4962.545s	frames: 806912
+2021-01-07 23:20:24,755 Average window size: 10  reward: 12.535
+2021-01-07 23:21:37,067 update: 197	fps: 52.802	
+2021-01-07 23:21:37,068 update: 197	env-time: 10346.883s	pth-time: 4985.207s	frames: 811008
+2021-01-07 23:21:37,068 Average window size: 10  reward: 12.601
+2021-01-07 23:22:45,831 update: 198	fps: 52.832	
+2021-01-07 23:22:45,832 update: 198	env-time: 10391.149s	pth-time: 5009.584s	frames: 815104
+2021-01-07 23:22:45,832 Average window size: 10  reward: 12.565
+2021-01-07 23:23:54,128 update: 199	fps: 52.864	
+2021-01-07 23:23:54,129 update: 199	env-time: 10438.558s	pth-time: 5030.337s	frames: 819200
+2021-01-07 23:23:54,129 Average window size: 10  reward: 12.435
+2021-01-07 23:25:09,740 update: 200	fps: 52.870	
+2021-01-07 23:25:09,740 update: 200	env-time: 10490.369s	pth-time: 5054.006s	frames: 823296
+2021-01-07 23:25:09,740 Average window size: 10  reward: 12.372
+2021-01-07 23:26:25,668 update: 201	fps: 52.875	
+2021-01-07 23:26:25,669 update: 201	env-time: 10542.255s	pth-time: 5077.815s	frames: 827392
+2021-01-07 23:26:25,669 Average window size: 10  reward: 12.397
+2021-01-07 23:27:36,516 update: 202	fps: 52.898	
+2021-01-07 23:27:36,516 update: 202	env-time: 10589.242s	pth-time: 5101.557s	frames: 831488
+2021-01-07 23:27:36,516 Average window size: 10  reward: 12.205
+2021-01-07 23:28:45,543 update: 203	fps: 52.926	
+2021-01-07 23:28:45,544 update: 203	env-time: 10634.423s	pth-time: 5125.287s	frames: 835584
+2021-01-07 23:28:45,544 Average window size: 10  reward: 12.213
+2021-01-07 23:29:56,550 update: 204	fps: 52.947	
+2021-01-07 23:29:56,551 update: 204	env-time: 10683.416s	pth-time: 5147.174s	frames: 839680
+2021-01-07 23:29:56,551 Average window size: 10  reward: 12.229
+2021-01-07 23:31:05,741 update: 205	fps: 52.974	
+2021-01-07 23:31:05,742 update: 205	env-time: 10729.515s	pth-time: 5170.138s	frames: 843776
+2021-01-07 23:31:05,742 Average window size: 10  reward: 12.239
+2021-01-07 23:32:11,240 update: 206	fps: 53.013	
+2021-01-07 23:32:11,240 update: 206	env-time: 10773.666s	pth-time: 5191.362s	frames: 847872
+2021-01-07 23:32:11,240 Average window size: 10  reward: 12.176
+2021-01-07 23:33:21,731 update: 207	fps: 53.036	
+2021-01-07 23:33:21,732 update: 207	env-time: 10821.089s	pth-time: 5214.308s	frames: 851968
+2021-01-07 23:33:21,732 Average window size: 10  reward: 12.131
+2021-01-07 23:34:33,555 update: 208	fps: 53.053	
+2021-01-07 23:34:33,556 update: 208	env-time: 10871.851s	pth-time: 5235.238s	frames: 856064
+2021-01-07 23:34:33,556 Average window size: 10  reward: 12.187
+2021-01-07 23:35:47,901 update: 209	fps: 53.063	
+2021-01-07 23:35:47,902 update: 209	env-time: 10920.062s	pth-time: 5261.251s	frames: 860160
+2021-01-07 23:35:47,902 Average window size: 10  reward: 12.278
+2021-01-07 23:36:59,317 update: 210	fps: 53.082	
+2021-01-07 23:36:59,318 update: 210	env-time: 10971.098s	pth-time: 5281.494s	frames: 864256
+2021-01-07 23:36:59,318 Average window size: 10  reward: 12.190
+2021-01-07 23:38:13,296 update: 211	fps: 53.092	
+2021-01-07 23:38:13,296 update: 211	env-time: 11022.607s	pth-time: 5303.736s	frames: 868352
+2021-01-07 23:38:13,296 Average window size: 10  reward: 12.315
+2021-01-07 23:39:31,231 update: 212	fps: 53.089	
+2021-01-07 23:39:31,232 update: 212	env-time: 11074.466s	pth-time: 5329.702s	frames: 872448
+2021-01-07 23:39:31,232 Average window size: 10  reward: 12.369
+2021-01-07 23:40:45,609 update: 213	fps: 53.098	
+2021-01-07 23:40:45,610 update: 213	env-time: 11126.390s	pth-time: 5352.021s	frames: 876544
+2021-01-07 23:40:45,610 Average window size: 10  reward: 12.291
+2021-01-07 23:42:01,786 update: 214	fps: 53.101	
+2021-01-07 23:42:01,787 update: 214	env-time: 11176.906s	pth-time: 5377.569s	frames: 880640
+2021-01-07 23:42:01,788 Average window size: 10  reward: 12.389
+2021-01-07 23:43:19,602 update: 215	fps: 53.099	
+2021-01-07 23:43:19,603 update: 215	env-time: 11230.124s	pth-time: 5402.040s	frames: 884736
+2021-01-07 23:43:19,604 Average window size: 10  reward: 12.392
+2021-01-07 23:44:34,855 update: 216	fps: 53.105	
+2021-01-07 23:44:34,856 update: 216	env-time: 11284.373s	pth-time: 5422.920s	frames: 888832
+2021-01-07 23:44:34,856 Average window size: 10  reward: 12.441
+2021-01-07 23:45:48,449 update: 217	fps: 53.116	
+2021-01-07 23:45:48,449 update: 217	env-time: 11334.492s	pth-time: 5446.267s	frames: 892928
+2021-01-07 23:45:48,450 Average window size: 10  reward: 12.429
+2021-01-07 23:47:01,039 update: 218	fps: 53.131	
+2021-01-07 23:47:01,040 update: 218	env-time: 11383.648s	pth-time: 5469.564s	frames: 897024
+2021-01-07 23:47:01,041 Average window size: 10  reward: 12.338
+2021-01-07 23:48:16,786 update: 219	fps: 53.135	
+2021-01-07 23:48:16,787 update: 219	env-time: 11434.094s	pth-time: 5494.724s	frames: 901120
+2021-01-07 23:48:16,787 Average window size: 10  reward: 12.428
+2021-01-07 23:49:33,723 update: 220	fps: 53.135	
+2021-01-07 23:49:33,724 update: 220	env-time: 11491.086s	pth-time: 5514.532s	frames: 905216
+2021-01-07 23:49:33,724 Average window size: 10  reward: 12.452
+2021-01-07 23:50:53,728 update: 221	fps: 53.126	
+2021-01-07 23:50:53,730 update: 221	env-time: 11548.291s	pth-time: 5537.111s	frames: 909312
+2021-01-07 23:50:53,730 Average window size: 10  reward: 12.526
+2021-01-07 23:52:01,081 update: 222	fps: 53.156	
+2021-01-07 23:52:01,082 update: 222	env-time: 11595.863s	pth-time: 5556.774s	frames: 913408
+2021-01-07 23:52:01,082 Average window size: 10  reward: 12.532
+2021-01-07 23:53:11,295 update: 223	fps: 53.177	
+2021-01-07 23:53:11,296 update: 223	env-time: 11643.264s	pth-time: 5579.473s	frames: 917504
+2021-01-07 23:53:11,296 Average window size: 10  reward: 12.500
+2021-01-07 23:54:31,439 update: 224	fps: 53.168	
+2021-01-07 23:54:31,440 update: 224	env-time: 11698.190s	pth-time: 5604.568s	frames: 921600
+2021-01-07 23:54:31,440 Average window size: 10  reward: 12.559
+2021-01-07 23:55:42,583 update: 225	fps: 53.186	
+2021-01-07 23:55:42,584 update: 225	env-time: 11746.148s	pth-time: 5627.626s	frames: 925696
+2021-01-07 23:55:42,584 Average window size: 10  reward: 12.514
+2021-01-07 23:56:52,835 update: 226	fps: 53.206	
+2021-01-07 23:56:52,836 update: 226	env-time: 11793.104s	pth-time: 5650.802s	frames: 929792
+2021-01-07 23:56:52,836 Average window size: 10  reward: 12.522
+2021-01-07 23:58:04,885 update: 227	fps: 53.221	
+2021-01-07 23:58:04,886 update: 227	env-time: 11838.647s	pth-time: 5677.187s	frames: 933888
+2021-01-07 23:58:04,886 Average window size: 10  reward: 12.587
+2021-01-07 23:59:15,493 update: 228	fps: 53.241	
+2021-01-07 23:59:15,494 update: 228	env-time: 11889.393s	pth-time: 5696.936s	frames: 937984
+2021-01-07 23:59:15,495 Average window size: 10  reward: 12.660
+2021-01-08 00:00:25,579 update: 229	fps: 53.261	
+2021-01-08 00:00:25,580 update: 229	env-time: 11933.678s	pth-time: 5722.623s	frames: 942080
+2021-01-08 00:00:25,580 Average window size: 10  reward: 12.762
+2021-01-08 00:01:23,688 update: 230	fps: 53.318	
+2021-01-08 00:01:23,689 update: 230	env-time: 11979.858s	pth-time: 5734.450s	frames: 946176
+2021-01-08 00:01:23,689 Average window size: 10  reward: 12.558
+2021-01-08 00:02:17,844 update: 231	fps: 53.386	
+2021-01-08 00:02:17,844 update: 231	env-time: 12027.895s	pth-time: 5740.368s	frames: 950272
+2021-01-08 00:02:17,844 Average window size: 10  reward: 12.542
+2021-01-08 00:03:04,024 update: 232	fps: 53.477	
+2021-01-08 00:03:04,025 update: 232	env-time: 12067.652s	pth-time: 5746.689s	frames: 954368
+2021-01-08 00:03:04,025 Average window size: 10  reward: 12.575
+2021-01-08 00:03:54,175 update: 233	fps: 53.556	
+2021-01-08 00:03:54,176 update: 233	env-time: 12110.755s	pth-time: 5753.641s	frames: 958464
+2021-01-08 00:03:54,176 Average window size: 10  reward: 12.612
+2021-01-08 00:04:45,870 update: 234	fps: 53.630	
+2021-01-08 00:04:45,871 update: 234	env-time: 12156.740s	pth-time: 5759.249s	frames: 962560
+2021-01-08 00:04:45,871 Average window size: 10  reward: 12.662
+2021-01-08 00:05:35,689 update: 235	fps: 53.709	
+2021-01-08 00:05:35,689 update: 235	env-time: 12201.089s	pth-time: 5764.621s	frames: 966656
+2021-01-08 00:05:35,690 Average window size: 10  reward: 12.635
+2021-01-08 00:06:20,865 update: 236	fps: 53.802	
+2021-01-08 00:06:20,866 update: 236	env-time: 12239.600s	pth-time: 5771.191s	frames: 970752
+2021-01-08 00:06:20,866 Average window size: 10  reward: 12.622
+2021-01-08 00:07:02,824 update: 237	fps: 53.903	
+2021-01-08 00:07:02,825 update: 237	env-time: 12276.950s	pth-time: 5775.707s	frames: 974848
+2021-01-08 00:07:02,825 Average window size: 10  reward: 12.545
+2021-01-08 00:07:48,000 update: 238	fps: 53.995	
+2021-01-08 00:07:48,000 update: 238	env-time: 12315.585s	pth-time: 5782.152s	frames: 978944
+2021-01-08 00:07:48,000 Average window size: 10  reward: 12.457
+2021-01-08 00:08:31,754 update: 239	fps: 54.090	
+2021-01-08 00:08:31,755 update: 239	env-time: 12353.767s	pth-time: 5787.630s	frames: 983040
+2021-01-08 00:08:31,755 Average window size: 10  reward: 12.502
+2021-01-08 00:09:21,238 update: 240	fps: 54.168	
+2021-01-08 00:09:21,239 update: 240	env-time: 12397.994s	pth-time: 5792.792s	frames: 987136
+2021-01-08 00:09:21,239 Average window size: 10  reward: 12.510
+2021-01-08 00:10:18,602 update: 241	fps: 54.222	
+2021-01-08 00:10:18,602 update: 241	env-time: 12449.380s	pth-time: 5798.560s	frames: 991232
+2021-01-08 00:10:18,602 Average window size: 10  reward: 12.504
+2021-01-08 00:11:04,499 update: 242	fps: 54.310	
+2021-01-08 00:11:04,499 update: 242	env-time: 12489.779s	pth-time: 5803.962s	frames: 995328
+2021-01-08 00:11:04,499 Average window size: 10  reward: 12.364
+2021-01-08 00:11:51,156 update: 243	fps: 54.395	
+2021-01-08 00:11:51,157 update: 243	env-time: 12530.900s	pth-time: 5809.399s	frames: 999424
+2021-01-08 00:11:51,157 Average window size: 10  reward: 12.335
+2021-01-12 13:18:38,987 interaction_exploration/cv/nav-novelty-xz//run1/ckpt.24.pth
+2021-01-12 13:18:38,987 num_steps: 1024
+2021-01-12 13:44:40,369 Average episode reward: 1.3875
+2021-01-25 14:55:25,475 interaction_exploration/cv/nav-novelty-xz//run1/ckpt.24.pth
+2021-01-25 14:55:25,476 num_steps: 1024
+2021-01-25 15:17:40,680 Average episode reward: 12.2875
