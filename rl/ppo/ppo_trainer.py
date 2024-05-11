@@ -15,6 +15,8 @@ import numpy as np
 import torch
 import json
 from torch.optim.lr_scheduler import LambdaLR
+import cv2
+import pickle
 
 # [!!] Remove habitat imports
 # from habitat import Config, logger
@@ -461,6 +463,11 @@ class PPOTrainer(BaseRLTrainer):
 
             self.envs.close()
 
+    def get_action(self,index, act_to_idx):
+        for action, idx in act_to_idx.items():
+            if idx == index:
+                return action
+        return None
 
     def eval(self) -> None:
         r"""Main method of trainer evaluation. Calls _eval_checkpoint() that
@@ -528,8 +535,11 @@ class PPOTrainer(BaseRLTrainer):
 
         pbar = tqdm.tqdm()
         self.actor_critic.eval()
-
-
+        print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+        print(self.config.ENV.TEST_EPISODE_COUNT)
+        print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+        action_list = []
+        observation_list = []
         while (
             len(stats_episodes) < self.config.ENV.TEST_EPISODE_COUNT
             and self.envs.num_envs > 0
@@ -561,6 +571,11 @@ class PPOTrainer(BaseRLTrainer):
             observations, rewards, dones, infos = [
                 list(x) for x in zip(*outputs)
             ]
+            # print("################################################")
+            # print(self.envs.act_to_idx)
+            # print(type(observations[0]["rgb"]))
+            # print(actions)
+            
             batch = self.batch_obs(observations, self.device)
 
             not_done_masks = torch.tensor(
@@ -568,6 +583,42 @@ class PPOTrainer(BaseRLTrainer):
                 dtype=torch.float,
                 device=self.device,
             )
+            # print("################################################")
+            # print()
+            act_to_idx = {'forward': 0, 'up': 1, 'down': 2, 'tright': 3, 'tleft': 4, 'take': 5, 'put': 6, 'open': 7, 'close': 8, 'toggle-on': 9, 'toggle-off': 10, 'slice': 11}
+            # print(type(observations[0]["rgb"]))
+            # print(actions)
+            # print(rewards)
+            # print(infos[0])
+            # print(dones)
+            if not dones[0]:
+                
+                if rewards[0]== 1:
+                    if self.get_action(actions.item(),act_to_idx) == "take" or self.get_action(actions.item(),act_to_idx) == "put" or self.get_action(actions.item(),act_to_idx) == "open" or self.get_action(actions.item(),act_to_idx) == "close":
+                        # cv2.imwrite('{}_{}.png'.format(self.get_action(actions.item(),act_to_idx), '2'), observations[0]["rgb"])
+                        # cv2.imwrite('{}_{}.png'.format(self.get_action(actions.item(),act_to_idx), '1'), prev_obs[0]["rgb"])
+                        action_list.append(self.get_action(actions.item(),act_to_idx))
+                        observation_list.append([prev_obs[0]["rgb"],observations[0]["rgb"]])
+            
+            if dones[0]:
+
+                scene = current_episodes[0]['scene_id']
+                episode = current_episodes[0]['episode_id']
+
+                # Create filename
+                filename = f"{scene}_{episode}.pkl"
+
+                # Data to save
+                data_to_save = {'action_list': action_list, 'observation_list': observation_list}  # Replace with your actual data
+
+                # Save data to pickle file
+                with open(filename, 'wb') as f:
+                    pickle.dump(data_to_save, f)
+
+                action_list = []
+                observation_list = [] 
+
+
 
             rewards = torch.tensor(
                 rewards, dtype=torch.float, device=self.device
@@ -575,58 +626,61 @@ class PPOTrainer(BaseRLTrainer):
 
             current_episode_reward += rewards
 
-            # [!!] store epiode history
-            for i in range(self.envs.num_envs):
-                episode_infos[i].append(infos[i])
+            # # [!!] store epiode history
+            # for i in range(self.envs.num_envs):
+            #     episode_infos[i].append(infos[i])
 
 
             next_episodes = self.envs.current_episodes()
             envs_to_pause = []
             n_envs = self.envs.num_envs
-            for i in range(n_envs):
+            prev_obs = observations
+            # for i in range(n_envs):
 
-                if (
-                    next_episodes[i]['scene_id'],
-                    next_episodes[i]['episode_id'],
-                ) in stats_episodes:
-                    envs_to_pause.append(i)
+            #     if (
+            #         next_episodes[i]['scene_id'],
+            #         next_episodes[i]['episode_id'],
+            #     ) in stats_episodes:
+            #         envs_to_pause.append(i)
 
-                # episode ended
-                if not_done_masks[i].item() == 0:
-                    # pbar.update()
-                    episode_stats = dict()
-                    episode_stats["reward"] = current_episode_reward[i].item()
-                    episode_stats.update(
-                        self._extract_scalars_from_info(infos[i])
-                    )
-                    current_episode_reward[i] = 0
+            #     # episode ended
+            #     if not_done_masks[i].item() == 0:
+            #         # pbar.update()
+            #         episode_stats = dict()
+            #         episode_stats["reward"] = current_episode_reward[i].item()
+            #         episode_stats.update(
+            #             self._extract_scalars_from_info(infos[i])
+            #         )
+            #         current_episode_reward[i] = 0
 
 
-                    # [!!] Add per-step episode information
-                    episode_info = []
-                    for info in episode_infos[i]:
-                        act_data = {'reward': info['reward'], 'action': info['action'], 'target': None, 'success': info['success']} 
-                        if 'target' in info:
-                            act_data['target'] = info['target']['objectId']
-                        episode_info.append(act_data)
-                    episode_stats['step_info'] = episode_info
-                    episode_infos[i] = []
+            #         # [!!] Add per-step episode information
+            #         episode_info = []
+            #         for info in episode_infos[i]:
+            #             act_data = {'reward': info['reward'], 'action': info['action'], 'target': None, 'success': info['success']} 
+            #             if 'target' in info:
+            #                 act_data['target'] = info['target']['objectId']
+            #             episode_info.append(act_data)
+            #         episode_stats['step_info'] = episode_info
+            #         episode_infos[i] = []
 
-                    # use scene_id + episode_id as unique id for storing stats
-                    stats_episodes[
-                        (
-                            current_episodes[i]['scene_id'],
-                            current_episodes[i]['episode_id'],
-                        )
-                    ] = episode_stats
+            #         # use scene_id + episode_id as unique id for storing stats
+            #         stats_episodes[
+            #             (
+            #                 current_episodes[i]['scene_id'],
+            #                 current_episodes[i]['episode_id'],
+            #             )
+            #         ] = episode_stats
 
-                    # [!!] Save episode data in the eval folder for processing
-                    scene, episode = current_episodes[i]['scene_id'], current_episodes[i]['episode_id']
-                    torch.save({'scene_id':scene,
-                                'episode_id':episode,
-                                'stats':episode_stats},
-                                f'{self.config.CHECKPOINT_FOLDER}/eval/{scene}_{episode}.pth')
+            #         # [!!] Save episode data in the eval folder for processing
+            #         scene, episode = current_episodes[i]['scene_id'], current_episodes[i]['episode_id']
+            #         torch.save({'scene_id':scene,
+            #                     'episode_id':episode,
+            #                     'stats':episode_stats},
+            #                     f'{self.config.CHECKPOINT_FOLDER}/eval/{scene}_{episode}.pth')
                     
+            
+
 
             (
                 self.envs,

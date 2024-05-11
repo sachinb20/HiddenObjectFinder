@@ -23,6 +23,10 @@ class ThorEnv(gym.Env):
 
         self.actions, self.action_fns = self.get_action_fns()
         self.act_to_idx = {act: idx for idx, act in enumerate(self.actions)}
+        print("################################################")
+
+        print(self.act_to_idx)
+        print("################################################")
 
         self.observation_space = spaces.Dict({'rgb': spaces.Box(-np.inf, np.inf, (3, self.obs_sz, self.obs_sz))})
         self.action_space = spaces.Discrete(len(self.actions))
@@ -243,8 +247,8 @@ class ThorObjs(ThorEnv):
     def __init__(self, config):
         super().__init__(config)
         self.movement_actions = ['forward', 'up', 'down', 'tright', 'tleft']
-        # self.interactions = ['take', 'put', 'open', 'close', 'toggle-on', 'toggle-off', 'slice']
-        self.interactions = ['open', 'close']
+        self.interactions = ['take', 'put', 'open', 'close', 'toggle-on', 'toggle-off', 'slice']
+        # self.interactions = ['open', 'close']
         self.interaction_set = set(self.interactions)
 
         self.N = self.config.ENV.NGRID # 5x5 grid, center = active
@@ -253,22 +257,22 @@ class ThorObjs(ThorEnv):
 
     def get_action_fns(self):
         actions, action_fns = super().get_action_fns()
-        # action_fns.update({
-        #     'take': self.take,
-        #     'put': self.put,
-            # 'open': self.open_obj,
-            # 'close': self.close_obj,
-        #     'toggle-on': self.toggle_on,
-        #     'toggle-off': self.toggle_off,
-        #     'slice': self.slice,
-        # })
         action_fns.update({
+            'take': self.take,
+            'put': self.put,
             'open': self.open_obj,
             'close': self.close_obj,
-
+            'toggle-on': self.toggle_on,
+            'toggle-off': self.toggle_off,
+            'slice': self.slice,
         })
-        # actions += ['take', 'put', 'open', 'close', 'toggle-on', 'toggle-off', 'slice']
-        actions += ['open', 'close',]
+        # action_fns.update({
+        #     'open': self.open_obj,
+        #     'close': self.close_obj,
+
+        # })
+        actions += ['take', 'put', 'open', 'close', 'toggle-on', 'toggle-off', 'slice']
+        # actions += ['open', 'close',]
         return actions, action_fns
 
     def init_params(self):

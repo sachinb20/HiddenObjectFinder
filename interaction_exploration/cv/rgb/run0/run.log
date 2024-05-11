@@ -731,3 +731,4 @@
 2020-12-29 14:25:26,027 interaction_exploration/cv/rgb//run0/ckpt.24.pth
 2020-12-29 14:25:26,028 num_steps: 1024
 2020-12-29 14:53:10,195 Average episode reward: 10.8750
+2024-05-11 00:08:34,332 agent number of parameters: 2227848
