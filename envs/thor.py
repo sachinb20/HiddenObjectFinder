@@ -34,8 +34,8 @@ class ThorEnv(gym.Env):
         local_exe = None if self.config.ENV.LOCAL_EXE=='None' else self.config.ENV.LOCAL_EXE
         self.controller = ai2thor.controller.Controller(quality='Ultra',
                                                         local_executable_path=local_exe,
-                                                        platform=CloudRendering,
-                                                        # x_display=self.x_display
+                                                        #platform=CloudRendering,
+                                                        x_display=self.x_display
                                                         )
 
     def seed(self, seed):
