@@ -324,6 +324,7 @@ def update_scene_graph(scene_graph,action,obj_id,recept_id):
 
 
 controller = Controller(
+	agentMode="arm",
     gridSize=0.5,
     rotateStepDegrees=2,
     snapToGrid=False,

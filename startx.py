@@ -1,99 +1,63 @@
-#!/usr/bin/env python
-
-
-import subprocess
-import shlex
-import re
-import platform
-import tempfile
+import cv2
+import numpy as np
 import os
-import sys
 
-def pci_records():
-    records = []
-    command = shlex.split('lspci -vmm')
-    output = subprocess.check_output(command).decode()
+# Load all images from a folder
+folder_path = '/home/dell/interaction-exploration/HiddenObjectFinder/sample_images'
+output_folder1 = '/home/dell/interaction-exploration/HiddenObjectFinder/sample_images_bbox'
+output_folder2 = '/home/dell/interaction-exploration/HiddenObjectFinder/sample_images_bbox4pick'
+image_files = os.listdir(folder_path)
 
-    for devices in output.strip().split("\n\n"):
-        record = {}
-        records.append(record)
-        for row in devices.split("\n"):
-            key, value = row.split("\t")
-            record[key.split(':')[0]] = value
+# Define bounding box coordinates
+N = 3
+frame_sz = 300  # Adjust the frame size according to your image size
+center = ((frame_sz // N) * (N // 2), (frame_sz // N) * ((N + 1) // 2))
 
-    return records
+center_grid = np.array([[center[0], center[0], center[1], center[1]]])  # xyxy
+print(center_grid)
+# Create output folder if it doesn't exist
+if not os.path.exists(output_folder1):
+    os.makedirs(output_folder1)
 
-def generate_xorg_conf(devices):
-    xorg_conf = []
+# Loop through all images in the folder
+for image_file in image_files:
+    image_path = os.path.join(folder_path, image_file)
+    image = cv2.imread(image_path)
 
-    device_section = """
-Section "Device"
-    Identifier     "Device{device_id}"
-    Driver         "nvidia"
-    VendorName     "NVIDIA Corporation"
-    BusID          "{bus_id}"
-EndSection
-"""
-    server_layout_section = """
-Section "ServerLayout"
-    Identifier     "Layout0"
-    {screen_records}
-EndSection
-"""
-    screen_section = """
-Section "Screen"
-    Identifier     "Screen{screen_id}"
-    Device         "Device{device_id}"
-    DefaultDepth    24
-    Option         "AllowEmptyInitialConfiguration" "True"
-    SubSection     "Display"
-        Depth       24
-        Virtual 1024 768
-    EndSubSection
-EndSection
-"""
-    screen_records = []
-    for i, bus_id in enumerate(devices):
-        xorg_conf.append(device_section.format(device_id=i, bus_id=bus_id))
-        xorg_conf.append(screen_section.format(device_id=i, screen_id=i))
-        screen_records.append('Screen {screen_id} "Screen{screen_id}" 0 0'.format(screen_id=i))
-    
-    xorg_conf.append(server_layout_section.format(screen_records="\n    ".join(screen_records)))
+    # Draw bounding box on the image
+    for box in center_grid:
+        pt1 = (int(box[0]), int(box[1]))
+        pt2 = (int(box[2]), int(box[3]))
+        print(pt1,pt2)
+        cv2.rectangle(image, pt1, pt2, (0, 255, 0), 2)  # Green color, thickness = 2
 
-    output =  "\n".join(xorg_conf)
-    print(output)
-    return output
+    # Save the modified image
+    output_path = os.path.join(output_folder1, image_file)
+    cv2.imwrite(output_path, image)
 
-def startx(display):
-    if platform.system() != 'Linux':
-        raise Exception("Can only run startx on linux")
+print("Bounding boxes added and images saved successfully!")
 
-    devices = []
-    for r in pci_records():
-        if r.get('Vendor', '') == 'NVIDIA Corporation'\
-                and r['Class'] in ['VGA compatible controller', '3D controller']:
-            bus_id = 'PCI:' + ':'.join(map(lambda x: str(int(x, 16)), re.split(r'[:\.]', r['Slot'])))
-            devices.append(bus_id)
+center_grid = np.array([[100,300,200,150]])  # xyxy
+print(center_grid)
+# Create output folder if it doesn't exist
+if not os.path.exists(output_folder2):
+    os.makedirs(output_folder2)
 
-    if not devices:
-        raise Exception("no nvidia cards found")
+# Loop through all images in the folder
+for image_file in image_files:
+    image_path = os.path.join(folder_path, image_file)
+    image = cv2.imread(image_path)
 
-    try:
-        fd, path = tempfile.mkstemp()
-        with open(path, "w") as f:
-            f.write(generate_xorg_conf(devices))
-        command = shlex.split("Xorg -noreset +extension GLX +extension RANDR +extension RENDER -config %s :%s" % (path, display))
-        subprocess.call(command)
-    finally: 
-        os.close(fd)
-        os.unlink(path)
+    # Draw bounding box on the image
+    for box in center_grid:
+        pt1 = (int(box[0]), int(box[1]))
+        pt2 = (int(box[2]), int(box[3]))
+        print(pt1,pt2)
+        cv2.rectangle(image, pt1, pt2, (0, 255, 0), 2)  # Green color, thickness = 2
 
+    # Save the modified image
+    output_path = os.path.join(output_folder2, image_file)
+    cv2.imwrite(output_path, image)
 
-if __name__ == '__main__':
-    display = 0
-    if len(sys.argv) > 1:
-        display = int(sys.argv[1])
+print("Bounding boxes added and images saved successfully!")
 
-    print(sys.argv)
-    print("Starting X on DISPLAY=:%s" % display)
-    startx(display)

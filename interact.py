@@ -324,6 +324,7 @@ def update_scene_graph(scene_graph,action,obj_id,recept_id):
 
 
 controller = Controller(
+	agentMode = "arm",
     gridSize=0.5,
     rotateStepDegrees=2,
     snapToGrid=False,
@@ -356,7 +357,7 @@ scene_graph, object_list = create_scene_graph(event.metadata["objects"])
 
 # print(f"Scene graph saved to {file_path}")
 
-target_receptacle = "Blinds"
+target_receptacle = "Cabinet"
 source_receptacle = "None"
 object = "Mug"
 
