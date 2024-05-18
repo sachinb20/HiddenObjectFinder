@@ -325,8 +325,11 @@ class PPOTrainer(BaseRLTrainer):
         rollouts.to(self.device)
 
         observations = self.envs.reset()
+        # print("@@@@@@@@@@@@@@@@@@")
+        # print(observations[0]["rgb"].shape)
         batch = self.batch_obs(observations, device=self.device)
-
+        # print("$$$$$$$$$$$$$$$$$$$")
+        # print(batch['rgb'].shape)
         for sensor in rollouts.observations:
             rollouts.observations[sensor][0].copy_(batch[sensor])
 
@@ -565,16 +568,11 @@ class PPOTrainer(BaseRLTrainer):
                 )
 
                 prev_actions.copy_(actions)
-
+            
             outputs = self.envs.step([a[0].item() for a in actions])
-
             observations, rewards, dones, infos = [
                 list(x) for x in zip(*outputs)
             ]
-            # print("################################################")
-            # print(self.envs.act_to_idx)
-            # print(type(observations[0]["rgb"]))
-            # print(actions)
             
             batch = self.batch_obs(observations, self.device)
 
@@ -583,8 +581,7 @@ class PPOTrainer(BaseRLTrainer):
                 dtype=torch.float,
                 device=self.device,
             )
-            # print("################################################")
-            # print()
+
             act_to_idx = {'forward': 0, 'up': 1, 'down': 2, 'tright': 3, 'tleft': 4, 'take': 5, 'put': 6, 'open': 7, 'close': 8, 'toggle-on': 9, 'toggle-off': 10, 'slice': 11}
             # print(type(observations[0]["rgb"]))
             # print(actions)
@@ -598,8 +595,49 @@ class PPOTrainer(BaseRLTrainer):
                         # cv2.imwrite('{}_{}.png'.format(self.get_action(actions.item(),act_to_idx), '2'), observations[0]["rgb"])
                         # cv2.imwrite('{}_{}.png'.format(self.get_action(actions.item(),act_to_idx), '1'), prev_obs[0]["rgb"])
                         action_list.append(self.get_action(actions.item(),act_to_idx))
-                        observation_list.append([prev_obs[0]["rgb"],observations[0]["rgb"]])
-            
+                        observation_list.append([prev_obs[0],observations[0]])
+
+                if self.get_action(actions.item(),act_to_idx) == "take":
+                    actions = torch.tensor([[act_to_idx["put"]]])
+                    outputs = self.envs.step([a[0].item() for a in actions])
+                    observations, rewards, dones, infos = [
+                        list(x) for x in zip(*outputs)
+                    ]
+                    
+                    batch = self.batch_obs(observations, self.device)
+
+                    not_done_masks = torch.tensor(
+                        [[0.0] if done else [1.0] for done in dones],
+                        dtype=torch.float,
+                        device=self.device,
+                    )
+
+                    action_list.append(self.get_action(actions.item(),act_to_idx))
+                    observation_list.append([prev_obs[0],observations[0]])
+
+
+                if self.get_action(actions.item(),act_to_idx) == "open":
+                    actions = torch.tensor([[act_to_idx["close"]]])
+                    outputs = self.envs.step([a[0].item() for a in actions])
+                    observations, rewards, dones, infos = [
+                        list(x) for x in zip(*outputs)
+                    ]
+                    
+                    batch = self.batch_obs(observations, self.device)
+
+                    not_done_masks = torch.tensor(
+                        [[0.0] if done else [1.0] for done in dones],
+                        dtype=torch.float,
+                        device=self.device,
+                    )
+
+                    action_list.append(self.get_action(actions.item(),act_to_idx))
+                    observation_list.append([prev_obs[0],observations[0]])
+
+
+
+
+
             if dones[0]:
 
                 scene = current_episodes[0]['scene_id']

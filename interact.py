@@ -191,6 +191,10 @@ def save_frame(controller,state):
 
     bgr_frame = cv2.cvtColor(controller.last_event.frame, cv2.COLOR_RGB2BGR)
     cv2.imwrite(state+'.jpg', bgr_frame)
+    
+    #depth_frame = cv2.cvtColor(controller.last_event.depth_frame, cv2.COLOR_RGB2BGR)\
+    print(controller.last_event.depth_frame)
+    cv2.imwrite(state+'depth.jpg', controller.last_event.depth_frame)
 
     return bgr_frame
 
@@ -334,6 +338,7 @@ controller = Controller(
     width=640,
     height=480,
     fieldOfView=90,
+    renderDepthImage = True
 )
 
 # controller.step(

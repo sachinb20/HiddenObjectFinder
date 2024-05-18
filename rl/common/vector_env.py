@@ -190,6 +190,7 @@ class VectorEnv:
                     #     raise NotImplementedError
 
                     observations, reward, done, info = env.step(**data)
+                    print(observations)
                     if auto_reset_done and done:
                         observations = env.reset()
                     connection_write_fn((observations, reward, done, info))
@@ -197,6 +198,7 @@ class VectorEnv:
 
                 elif command == RESET_COMMAND:
                     observations = env.reset()
+                    print("lauda")
                     connection_write_fn(observations)
 
                 elif command == RENDER_COMMAND:

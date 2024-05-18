@@ -122,8 +122,12 @@ def batch_obs(
 
     for obs in observations:
         for sensor in obs:
-            batch[sensor].append(_to_tensor(obs[sensor]))
+            # if sensor == "depth":
+            #     if obs[sensor] == None:
+            #         obs[sensor] = np.zeros((300,300))
 
+            batch[sensor].append(_to_tensor(obs[sensor]))
+            
     for sensor in batch:
         batch[sensor] = (
             torch.stack(batch[sensor], dim=0)

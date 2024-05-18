@@ -32,10 +32,12 @@ class ThorEnv(gym.Env):
         self.action_space = spaces.Discrete(len(self.actions))
 
         local_exe = None if self.config.ENV.LOCAL_EXE=='None' else self.config.ENV.LOCAL_EXE
-        self.controller = ai2thor.controller.Controller(quality='Ultra',
+        self.controller = ai2thor.controller.Controller(
+                                                        quality='Ultra',
                                                         local_executable_path=local_exe,
                                                         #platform=CloudRendering,
-                                                        x_display=self.x_display
+                                                        x_display=self.x_display,
+                                                        renderDepthImage=True
                                                         )
 
     def seed(self, seed):
@@ -72,7 +74,13 @@ class ThorEnv(gym.Env):
 
     def get_observation(self, state):
         img = state.frame
-        return {'rgb': img}
+        # print(self.controller.last_event.depth_frame)
+        depth = state.depth_frame
+        pose = self.agent_pose(state)
+        return {'rgb': img ,
+                'pose':pose
+                # ,'depth':depth
+                }
 
     def agent_pose(self, state):
         agent = state.metadata['agent']
@@ -162,7 +170,7 @@ class ThorEnv(gym.Env):
 
     def init_scene_and_agent_debug(self):
         self.scene = 'FloorPlan1'
-        self.controller.reset(self.scene)
+        self.controller.reset(self.scene,renderDepthImage=True)
         self.controller.step(dict(action='Initialize', **self.init_params()))
         self.controller.step(dict(action='GetReachablePositions'))
         self.reachable_positions = set([(pos['x'], pos['y'], pos['z']) for pos in self.state.metadata['reachablePositions']])

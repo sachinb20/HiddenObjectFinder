@@ -732,3 +732,19 @@
 2020-12-29 14:25:26,028 num_steps: 1024
 2020-12-29 14:53:10,195 Average episode reward: 10.8750
 2024-05-11 00:08:34,332 agent number of parameters: 2227848
+2024-05-17 18:09:42,485 agent number of parameters: 2230413
+2024-05-17 18:13:05,824 agent number of parameters: 2230413
+2024-05-17 18:15:04,468 agent number of parameters: 2230413
+2024-05-17 18:16:18,848 agent number of parameters: 2230413
+2024-05-17 18:18:22,780 agent number of parameters: 2230413
+2024-05-17 18:19:09,606 agent number of parameters: 2230413
+2024-05-17 18:19:41,602 agent number of parameters: 2230413
+2024-05-17 18:20:28,518 agent number of parameters: 2230413
+2024-05-17 18:31:18,140 agent number of parameters: 2230413
+2024-05-17 18:32:14,020 agent number of parameters: 2230413
+2024-05-17 18:32:37,893 update: 1	fps: 44.121	
+2024-05-17 18:32:37,893 update: 1	env-time: 20.879s	pth-time: 2.274s	frames: 1024
+2024-05-17 18:32:37,893 Average window size: 2  reward: 2.500
+2024-05-17 18:33:29,975 agent number of parameters: 2230413
+2024-05-17 19:01:14,650 agent number of parameters: 2230413
+2024-05-17 19:03:01,784 agent number of parameters: 2230413

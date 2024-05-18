@@ -25,6 +25,7 @@ def get_env_class(env_name):
         if hasattr(m, env_name):
             print("###########################################################")
             print(m, env_name)
+            print(getattr(m, env_name))
             return getattr(m, env_name)
 
     return None

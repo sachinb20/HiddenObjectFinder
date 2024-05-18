@@ -36,6 +36,8 @@ class RGBTrainer(VizTrainer):
         
     def batch_obs(self, observations, device=None):
         batch = batch_obs(observations, device) # rgb: (32, 300, 300, 3) [0, 255]
+        # print("$$$$$$$$$$$$$$$$$$$")
+        # print(batch['rgb'].shape)
         rgb = self.transform(batch['rgb'])
         batch['rgb'] = rgb
         return batch
