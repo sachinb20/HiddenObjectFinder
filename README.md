@@ -8,117 +8,90 @@ pip install -r requirements.txt
 
 Install AI2-Thor
 ```
-pip install ai2thor==2.3.8
+pip install ai2thor
 ```
 
-Download the simulator files (one-time download when THOR is first run) and test the simulator with a simple keyboard controlled agent.
+## Train the Hybrid variant
+
+Before running the training or evaluation scripts, set the environment variables according to the variant you want to use.
+
+####  Setting Up Environment Variables 
+
+```bash
+export E2E=false
+export OBCOV=false
+export HYBRID=true
 ```
-python kb_agent.py --x_display 0 --env-name ThorObjs-v0
-```
 
-Note: an X server is required to run the simulator on each GPU used for training. 
-Code tested with Python 3.7, Pytorch 1.6, cuda 10.1
+### Training 
 
-## Data
-
-**Download precomputed data and model checkpoints** 
-```
-bash interaction_exploration/tools/download_data.sh
-```
-This will download model checkpoints for all policies trained for interaction exploration and a precomputed copy of the affordance dataset and model that is be generated with a trained policy as part of interaction exploration. The dataset/models may be generated/trained using our code, but is provided here for convenience as well.
-
-
-## Training interaction exploration agents
-
-To train a simple RGB agent on GPU 0, Display :0
+To train a agent on GPU 0, Display :0
 ```
 python -m interaction_exploration.run \
-    --config interaction_exploration/config/rgb.yaml \
+    --config interaction_exploration/config/intexpGT.yaml \
     --mode train \
     SEED 0 TORCH_GPU_ID 0 X_DISPLAY :0 \
     ENV.NUM_STEPS 256 \
     NUM_PROCESSES 16 \
-    CHECKPOINT_FOLDER interaction_exploration/cv/rgb/run0/ \
+    CHECKPOINT_FOLDER interaction_exploration/cv/Hybrid/run0/ \
 
 ```
 
-To train our interaction exploration agents that use a trained affordance module
-```
-python -m interaction_exploration.run \
-    --config interaction_exploration/config/intexp.yaml \
-    --mode train \
-    SEED 0 TORCH_GPU_ID 0 X_DISPLAY :0 \
-    ENV.NUM_STEPS 256 \
-    NUM_PROCESSES 16 \
-    CHECKPOINT_FOLDER interaction_exploration/cv/intexp/run0/ \
-    MODEL.BEACON_MODEL affordance_seg/cv/rgb_unet/epoch=39-val_loss=0.6737.ckpt
-```
-Note: The segmentation model must be trained first. See the [README](affordance_seg/README.md) in `affordance_segmentation/`. tl;dr First train the baseline RGB policy, then extract a dataset using rollouts from the policy, then train the segmentation model.
 
-To train some or all models 3 times with different seeds please see and edit the `train.sh` script. Then run:
-```
-bash interaction_exploration/tools/train.sh
-```
-This will save checkpoints to `cv/{method}/run{idx}` for each method and for 3 uniquely seeded training runs.
+## Policy Evaluation
 
-## Evaluation
+### Hybrid
 
-To evaluate an interaction exploration model 
-```
-export UNETCKPT=`ls interaction_exploration/cv/intexp/run0/unet/*.ckpt`
-python -m interaction_exploration.run \
-    --config interaction_exploration/config/intexp.yaml \
-    --mode eval \
-    ENV.NUM_STEPS 1024 \
-    NUM_PROCESSES 32 \
-    EVAL.DATASET interaction_exploration/data/test_episodes_K_16.json \
-    TORCH_GPU_ID 0 X_DISPLAY :0 \
-    CHECKPOINT_FOLDER interaction_exploration/cv/intexp/run0/ \
-    LOAD interaction_exploration/cv/intexp/run0/ckpt.24.pth \
-    MODEL.BEACON_MODEL $UNETCKPT
+```bash
+export E2E=false
+export OBCOV=false
+export HYBRID=true
 ```
 
-To evaluate some or all trained models please see and edit the `eval.sh` script. Then run:
 ```
-bash interaction_exploration/tools/eval.sh
-```
-
-Once the policy rollouts and rewards are generated, some or all model results can be visualized using 
-```
-python -m interaction_exploration.tools.plot_results --cv_dir interaction_exploration/cv/ --models random rgb nav-novelty obj-coverage intexp
-```
-
-This should result in a curve similar to the one below, equivalent to Fig. 3 in the paper.
-<img src="http://vision.cs.utexas.edu/projects/interaction-exploration/media/results_github.png" height="256">
-
-## Policy visualizations
-
-To see a trained policy in action
-```
-bash interaction_exploration/tools/enjoy.sh <config> <checkpoint_dir>
-
-# e.g. for interaction exploration
-bash interaction_exploration/tools/enjoy.sh \
-    interaction_exploration/config/intexp.yaml \
-    interaction_exploration/cv/intexp/run0
+python -m interaction_exploration.run     
+    --config interaction_exploration/config/intexpGT.yaml     
+    --mode eval     ENV.NUM_STEPS 1024     NUM_PROCESSES 1     
+    EVAL.DATASET interaction_exploration/data/test_episodes_K_16.json     
+    TORCH_GPU_ID 0 X_DISPLAY :1     
+    CHECKPOINT_FOLDER interaction_exploration/checkpoints/intexpGT_Traverse_open_close/run0/ 
+    LOAD   interaction_exploration/checkpoints/intexpGT_Traverse_open_close/run0/ckpt.6.pth 
 ```
 
-Policy visualizations will show the current egocentric view (left), and a topdown view (right) showing successful and unsuccessful interaction attempts as green and yellow dots respectively.
+### E2E
 
-
-
-## License
-
-This project is released under the CC-BY-NC 4.0 license, as found in the LICENSE file.
-
-## Cite
-
-If you find this repository useful in your own research, please consider citing:
+```bash
+export E2E=true
+export OBCOV=false
+export HYBRID=false
 ```
-@inproceedings{interaction-exploration,
-    author = {Nagarajan, Tushar and Grauman, Kristen},
-    title = {Learning Affordance Landscapes for Interaction Exploration in 3D Environments},
-    booktitle = {NeurIPS},
-    year = {2020}
-}
+
 ```
+python -m interaction_exploration.run     
+    --config interaction_exploration/config/intexpGT.yaml     
+    --mode eval     ENV.NUM_STEPS 1024     NUM_PROCESSES 1     
+    EVAL.DATASET interaction_exploration/data/test_episodes_K_16.json     
+    TORCH_GPU_ID 0 X_DISPLAY :1     
+    CHECKPOINT_FOLDER interaction_exploration/checkpoints/intexpGT_Traverse_E2E_new/run0/ 
+    LOAD   interaction_exploration/checkpoints/intexpGT_Traverse_E2E_new/run0/ckpt.8.pth 
+```
+
+### ObjCov
+
+```bash
+export E2E=false
+export OBCOV=true
+export HYBRID=false
+```
+
+```
+python -m interaction_exploration.run     
+    --config interaction_exploration/config/intexpGT_no_interact.yaml     
+    --mode eval     ENV.NUM_STEPS 1024     NUM_PROCESSES 1     
+    EVAL.DATASET interaction_exploration/data/test_episodes_K_16.json     
+    TORCH_GPU_ID 0 X_DISPLAY :1     
+    CHECKPOINT_FOLDER interaction_exploration/checkpoints/intexpGT_Traverse_no_interact/run0/ 
+    LOAD   interaction_exploration/checkpoints/intexpGT_Traverse_no_interact/run0/ckpt.4.pth 
+```
+
+
