@@ -49,13 +49,13 @@ export HYBRID=true
 ```
 
 ```
-python -m interaction_exploration.run     
-    --config interaction_exploration/config/intexpGT.yaml     
-    --mode eval     ENV.NUM_STEPS 1024     NUM_PROCESSES 1     
-    EVAL.DATASET interaction_exploration/data/test_episodes_K_16.json     
-    TORCH_GPU_ID 0 X_DISPLAY :1     
-    CHECKPOINT_FOLDER interaction_exploration/checkpoints/intexpGT_Traverse_open_close/run0/ 
-    LOAD   interaction_exploration/checkpoints/intexpGT_Traverse_open_close/run0/ckpt.6.pth 
+python -m interaction_exploration.run   \
+    --config interaction_exploration/config/intexpGT.yaml  \     
+    --mode eval     ENV.NUM_STEPS 1024     NUM_PROCESSES 1    \
+    EVAL.DATASET interaction_exploration/data/test_episodes_K_16.json \    
+    TORCH_GPU_ID 0 X_DISPLAY :1   \
+    CHECKPOINT_FOLDER interaction_exploration/checkpoints/intexpGT_Traverse_open_close/run0/ \
+    LOAD   interaction_exploration/checkpoints/intexpGT_Traverse_open_close/run0/ckpt.6.pth \
 ```
 
 ### E2E
