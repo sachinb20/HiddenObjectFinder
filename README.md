@@ -1,13 +1,3 @@
-# Learning Affordance Landscapes for Interaction Exploration in 3D Environments
-
-![Teaser](http://vision.cs.utexas.edu/projects/interaction-exploration/media/concept.png)
-
-This repo contains code to train and evaluate *interaction exploration* agents that can discover and explore new interactions with object in their environment, while simultaneously building visual affordance models for their environment via exploration. See our [project page](http://vision.cs.utexas.edu/projects/interaction-exploration/) for more details and our spotlight video.
-
-This is the code accompanying our NeurIPS20 (spotlight) work:  
-**Learning Affordance Landscapes for Interaction Exploration in 3D Environments**  
-*Tushar Nagarajan and Kristen Grauman.*  
-[[arxiv]](https://arxiv.org/pdf/2008.09241.pdf) [[project page]](http://vision.cs.utexas.edu/projects/interaction-exploration/)
 
 ## Requirements
 Install required packages:
