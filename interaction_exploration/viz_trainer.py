@@ -14,7 +14,14 @@ import rl.ppo.ppo_trainer as ppo_trainer
 from rl.common.utils import logger
 from rl.common.env_utils import construct_envs, get_env_class
 from .utils import util
+import os
+E2E = os.getenv('E2E')
+OBCOV = os.getenv('OBCOV')
+HYBRID = os.getenv('HYBRID')
 
+E2E = E2E.lower() == 'true'
+OBCOV = OBCOV.lower() == 'true'
+HYBRID = HYBRID.lower() == 'true'
 class VizTrainer(ppo_trainer.PPOTrainer):
 
     def __init__(self, config):

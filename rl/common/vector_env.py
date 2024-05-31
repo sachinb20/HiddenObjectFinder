@@ -46,6 +46,7 @@ OBSERVATION_SPACE_COMMAND = "observation_space"
 ACTION_SPACE_COMMAND = "action_space"
 CALL_COMMAND = "call"
 EPISODE_COMMAND = "current_episode"
+ACT_COMMAND = "act"
 
 # # [!!] moved to env_utils
 # def _make_env_fn(
@@ -190,7 +191,7 @@ class VectorEnv:
                     #     raise NotImplementedError
 
                     observations, reward, done, info = env.step(**data)
-                    print(observations)
+                    # print(observations)
                     if auto_reset_done and done:
                         observations = env.reset()
                     connection_write_fn((observations, reward, done, info))
@@ -198,7 +199,12 @@ class VectorEnv:
 
                 elif command == RESET_COMMAND:
                     observations = env.reset()
-                    print("lauda")
+                    # print("lauda")
+                    connection_write_fn(observations)
+
+                elif command == ACT_COMMAND:
+                    observations = env.act(data)
+                    # print("lauda")
                     connection_write_fn(observations)
 
                 elif command == RENDER_COMMAND:
@@ -331,6 +337,21 @@ class VectorEnv:
             results.append(read_fn())
         self._is_waiting = False
         return results
+    
+    def act(self,action):
+        r"""Reset all the vectorized environments
+
+        :return: list of outputs from the reset method of envs.
+        """
+        self._is_waiting = True
+        for write_fn in self._connection_write_fns:
+            write_fn((ACT_COMMAND, action))
+        info = []
+        for read_fn in self._connection_read_fns:
+            info=read_fn()
+        self._is_waiting = False
+        return info
+
 
     def reset_at(self, index_env: int):
         r"""Reset in the index_env environment in the vector.

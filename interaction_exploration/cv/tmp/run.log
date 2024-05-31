@@ -1,6 +1,0 @@
-2024-05-10 21:17:48,536 interaction_exploration/cv/rgb/run0/fho/ckpt.22.pth
-2024-05-10 21:17:48,537 num_steps: 256
-2024-05-10 21:29:02,965 interaction_exploration/cv/rgb/run0/fho/ckpt.22.pth
-2024-05-10 21:29:02,970 num_steps: 256
-2024-05-10 21:31:33,475 Average episode reward: 3.0000 (1 episodes)
-2024-05-10 21:35:05,171 Average episode reward: 4.5000 (2 episodes)

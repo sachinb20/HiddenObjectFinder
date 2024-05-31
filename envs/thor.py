@@ -1,5 +1,4 @@
-# Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
-
+import os
 import gym
 from gym import spaces
 import collections
@@ -9,6 +8,17 @@ from PIL import Image
 import itertools
 import ai2thor.controller
 from ai2thor.platform import CloudRendering
+import os
+import cv2
+import json
+
+E2E = os.getenv('E2E')
+OBCOV = os.getenv('OBCOV')
+HYBRID = os.getenv('HYBRID')
+
+E2E = E2E.lower() == 'true'
+OBCOV = OBCOV.lower() == 'true'
+HYBRID = HYBRID.lower() == 'true'
 class ThorEnv(gym.Env):
 
     def __init__(self, config):
@@ -35,16 +45,25 @@ class ThorEnv(gym.Env):
         self.controller = ai2thor.controller.Controller(
                                                         quality='Ultra',
                                                         local_executable_path=local_exe,
-                                                        #platform=CloudRendering,
+                                                        # platform=CloudRendering,
                                                         x_display=self.x_display,
-                                                        renderDepthImage=True
+                                                        renderDepthImage=True,
+                                                        renderInstanceSegmentation=True
                                                         )
+        
+        self.depth_list = []
+        self.count = 0
+        self.prev_action = {"action": -1}
+        self.prev_reward  = 0
+        self.prev_key = (None,None)
 
     def seed(self, seed):
         self.rs = np.random.RandomState(seed)
 
     def get_action_fns(self):
         action_fns = {
+            "crouch":self.crouch,
+            "stand":self.stand,
             'forward':self.move,
             'up':self.look,
             'down':self.look,
@@ -58,7 +77,7 @@ class ThorEnv(gym.Env):
         params = {
             'gridSize': 0.25,
             'renderObjectImage': False,
-            'renderDepthImage': False,
+            'renderDepthImage': True,
         }
         return params
 
@@ -72,14 +91,121 @@ class ThorEnv(gym.Env):
 
         return action
 
+    def create_binary_masks_from_rgb(self, rgb_mask, color_to_object_id, objects, height=300, width=300):
+        # Initialize the binary masks
+        
+        masks = {
+            "traversable": np.zeros((height, width), dtype=np.uint8),
+            "openable": np.zeros((height, width), dtype=np.uint8),
+        }
+
+        if E2E:
+            masks["pickupable"] = np.zeros((height, width), dtype=np.uint8)
+
+        pixels = np.reshape(rgb_mask, (-1, 3))
+
+        # Find unique rows (unique colors)
+        unique_colors = np.unique(pixels, axis=0)
+
+        # Create a mapping from color to object ID
+        color_to_object_id = color_to_object_id
+
+        # Create a mapping from object ID to object properties
+        object_id_to_properties = {obj["objectId"]: obj for obj in objects}
+        # print(object_id_to_properties)
+
+        # Iterate through each unique color
+        for color in unique_colors:
+            # print(color)
+            color_tuple = tuple(color)
+            # print(color_to_object_id)
+
+
+            if color_tuple in color_to_object_id.keys():
+                object_id = color_to_object_id[color_tuple]
+                if object_id in object_id_to_properties.keys():
+                    obj = object_id_to_properties[object_id]
+
+                    # Find all pixels matching this color in the RGB mask
+                    mask = np.all(rgb_mask == color, axis=-1)
+                    
+                    # Populate the binary masks based on object properties
+                    if "Floor" in object_id:
+                        masks["traversable"][mask] = 1
+
+                    # if obj.get("sliceable", False):
+                    #     masks["sliceable"][mask] = 1
+
+                    if obj.get("pickupable", False) and E2E:
+                        masks["pickupable"][mask] = 1
+
+                    if obj.get("openable", False):
+                        masks["openable"][mask] = 1
+
+                    # if obj.get("toggleable", False):
+                    #     masks["toggleable"][mask] = 1
+
+                    # if obj.get("toggleable", False) and obj.get("isToggled", False):
+                    #     masks["toggled"][mask] = 1
+
+                    # if obj.get("pickupable", False) and obj.get("isPickedUp", False):
+                    #     masks["pickedUp"][mask] = 1
+
+                    # if obj.get("openable", False) and obj.get("isOpen", False):
+                    #     masks["opened"][mask] = 1
+
+        # Stack the masks to create a 7-channel binary mask
+        binary_mask = np.stack(list(masks.values()), axis=0)
+        # print(binary_mask.shape)
+        return binary_mask, masks
+    
+    def save_masks(self, rgb_mask, binary_masks,img, output_dir):
+        os.makedirs(output_dir, exist_ok=True)
+
+        img = Image.fromarray(img)
+        img.save(os.path.join(output_dir, "rgb.png"))       
+        # Save RGB mask
+        rgb_mask_image = Image.fromarray(rgb_mask)
+        rgb_mask_image.save(os.path.join(output_dir, "rgb_mask.png"))
+
+        # Save individual binary masks
+        for idx, (mask_name, mask_array) in enumerate(binary_masks.items()):
+            mask_image = Image.fromarray(mask_array * 255)  # Convert binary mask to image (0 or 255)
+            mask_image.save(os.path.join(output_dir, f"{mask_name}.png"))
+
+
     def get_observation(self, state):
         img = state.frame
         # print(self.controller.last_event.depth_frame)
         depth = state.depth_frame
+        
+        rgb_masks = state.instance_segmentation_frame
+        color = state.color_to_object_id
         pose = self.agent_pose(state)
+
+        binary_mask,masks = self.create_binary_masks_from_rgb(rgb_masks, state.color_to_object_id, state.metadata["objects"])
+        self.save_masks(rgb_masks, masks, state.frame, 'output_masks')
+        # print(binary_mask)
+        self.depth_list.append(depth)
+        # json_data = json.dumps(state.object_id_to_color, indent=4)
+
+        # # Step 3: Write the JSON string to a file
+        # with open('data.json', 'w') as file:
+        #     file.write(json_data)
+
+        # target_color = [244,
+        # 92,
+        # 95]
+        # # Create a binary mask where the target color is present
+        # mask = np.all(rgb_masks == target_color, axis=-1).astype(np.uint8)
+        # # Save or display the mask
+        # mask_output_path = str(self.count)+'.png'
+        # cv2.imwrite(mask_output_path, mask * 255)  # Save mask as an image
+        # self.count = self.count + 1
         return {'rgb': img ,
-                'pose':pose
-                # ,'depth':depth
+                # 'pose':pose ,
+                'aux':binary_mask,
+                # 'depth':[depth] 
                 }
 
     def agent_pose(self, state):
@@ -95,6 +221,12 @@ class ThorEnv(gym.Env):
 
     def move(self, direction):
         act_params = dict(action='MoveAhead')
+        return {'params': act_params}
+    def crouch(self, direction):
+        act_params = dict(action='Crouch')
+        return {'params': act_params}
+    def stand(self, direction):
+        act_params = dict(action='Stand')
         return {'params': act_params}
 
     def turn(self, direction):
@@ -131,14 +263,18 @@ class ThorEnv(gym.Env):
     def act(self, action):
 
         # get action parameters
-        action_info = {'action': action, 'success':False}
+        action_info = {'action': action, 'success':False
+                       , "prev_obs":self.get_observation(self.state),"next_obs":None,
+                       "prev_metadata":self.state.metadata,"next_metadata":None
+                       }
         action_info.update(self.action_fns[action](action))
 
         if action_info['params'] is not None:
             # print(action_info['params'])
             self.controller.step(action_info['params'])
             action_info['success'] = self.state.metadata['lastActionSuccess']
-
+            action_info['next_obs'] = self.get_observation(self.state)
+            action_info['next_metadata'] = self.state.metadata
         # if it's a movement action, double check that you're still on the grid
         if action_info['action']=='forward' and action_info['success']:
             x, y, z, rot, hor = self.agent_pose(self.state)
@@ -151,9 +287,20 @@ class ThorEnv(gym.Env):
 
     def step(self, action, **kwargs):
         self.t += 1
+        # print(self.prev_action)
+        # print(self.prev_reward)
 
-        action = self.parse_action(action['action'])
-        self.step_info = self.act(action)
+        # print(self.prev_reward)
+        # print(self.prev_action)
+
+        # if self.prev_action["action"] == 5 and self.prev_reward == 0.9:
+        #     # print("bobby")
+        #     action['action'] = 6
+
+
+
+        action_p = self.parse_action(action['action'])
+        self.step_info = self.act(action_p)
 
         observations = self.get_observation(self.state)
         reward = self.get_reward(observations)
@@ -161,6 +308,8 @@ class ThorEnv(gym.Env):
 
         self.step_info.update({'reward':reward, 'done':done})
 
+        self.prev_action = action
+        self.prev_reward = reward
         return observations, reward, done, self.step_info
 
     def reset(self):
@@ -185,6 +334,87 @@ class ThorEnv(gym.Env):
                         forceVisible=False,
                         numPlacementAttempts=5))
                     
+    def randomize_hidden_objects(self):
+        objects = self.controller.last_event.metadata['objects']
+        receptacles= [obj["objectType"] for obj in objects if obj["receptacle"]]
+        receptacles = set(receptacles)
+        receptacles.remove("Drawer")
+        receptacles.remove("Cabinet")
+        receptacles.remove("Fridge")
+        receptacles.remove("Microwave")
+        receptacles =list(receptacles)
+        # print(receptacles)
+        self.controller.step(
+            action="InitialRandomSpawn",
+            randomSeed=self.episode_id,
+            forceVisible=False,
+            numPlacementAttempts=5,
+            placeStationary=False,
+            numDuplicatesOfType = [
+                {
+                    "objectType": "Fork",
+                    "count": 2
+                },
+                {
+                    "objectType": "Potato",
+                    "count": 2
+                },
+                        {
+                    "objectType": "Egg",
+                    "count": 2
+                },
+                {
+                    "objectType": "Tomato",
+                    "count": 2
+                },
+                {
+                    "objectType": "PepperShaker",
+                    "count": 2
+                },
+                {
+                    "objectType": "Apple",
+                    "count": 2
+                },
+                {
+                    "objectType": "Lettuce",
+                    "count": 2
+                },
+                {
+                    "objectType": "Bread",
+                    "count": 2
+                },
+                {
+                    "objectType": "Potato",
+                    "count": 2
+                },
+                {
+                    "objectType": "Mug",
+                    "count": 2
+                },
+            {
+                "objectType": "Bowl",
+                "count": 2
+            },
+            {
+                "objectType": "Plate",
+                "count": 2
+            },
+            {
+                "objectType": "Knife",
+                "count": 2
+            },
+            {
+                "objectType": "Fork",
+                "count": 5
+            },
+                        {
+                "objectType": "Pot",
+                "count": 5
+            }
+            ],
+            excludedReceptacles=receptacles
+        )
+   
 
     def init_scene_and_agent(self, scene, episode=None):
 
@@ -194,12 +424,13 @@ class ThorEnv(gym.Env):
 
         self.scene = scene
         self.episode_id = episode or self.rs.randint(1000000000)
+
         
         self.controller.reset(self.scene) 
         self.controller.step(dict(action='Initialize', **self.init_params()))
 
-        self.randomize_objects()
-
+        # self.randomize_objects()
+        self.randomize_hidden_objects()
         self.controller.step(dict(action='GetReachablePositions'))
         reachable_positions = [(pos['x'], pos['y'], pos['z']) for pos in self.state.metadata['reachablePositions']]
         
@@ -216,6 +447,7 @@ class ThorEnv(gym.Env):
         
         if self.config.MODE == 'train':
             scene = self.rs.choice(['FloorPlan%d'%idx for idx in range(6, 30+1)]) # 6 --> 30 = train. 1 --> 5 = test
+            # print(scene)
 
         elif self.config.MODE == 'eval':
             if not hasattr(self, 'test_episodes'):
@@ -255,8 +487,12 @@ class ThorObjs(ThorEnv):
     def __init__(self, config):
         super().__init__(config)
         self.movement_actions = ['forward', 'up', 'down', 'tright', 'tleft']
-        self.interactions = ['take', 'put', 'open', 'close', 'toggle-on', 'toggle-off', 'slice']
-        # self.interactions = ['open', 'close']
+        if HYBRID:
+            self.interactions = ['open', 'close']
+        if OBCOV:
+            self.interactions = []
+        if E2E:
+            self.interactions = ['take', 'put', 'open', 'close']
         self.interaction_set = set(self.interactions)
 
         self.N = self.config.ENV.NGRID # 5x5 grid, center = active
@@ -265,22 +501,28 @@ class ThorObjs(ThorEnv):
 
     def get_action_fns(self):
         actions, action_fns = super().get_action_fns()
+        # action_fns.update({
+            # 'take': self.take,
+            # 'put': self.put,
+            # 'open': self.open_obj,
+            # 'close': self.close_obj,
+        #     'toggle-on': self.toggle_on,
+        #     'toggle-off': self.toggle_off,
+        #     'slice': self.slice,
+        # })
         action_fns.update({
             'take': self.take,
             'put': self.put,
             'open': self.open_obj,
             'close': self.close_obj,
-            'toggle-on': self.toggle_on,
-            'toggle-off': self.toggle_off,
-            'slice': self.slice,
         })
-        # action_fns.update({
-        #     'open': self.open_obj,
-        #     'close': self.close_obj,
-
-        # })
-        actions += ['take', 'put', 'open', 'close', 'toggle-on', 'toggle-off', 'slice']
-        # actions += ['open', 'close',]
+        if OBCOV:
+            actions += []
+        if HYBRID:
+            actions += ['open', 'close']
+        if E2E:
+            actions += ['take', 'put', 'open', 'close']
+        
         return actions, action_fns
 
     def init_params(self):
@@ -441,13 +683,25 @@ class ThorObjs(ThorEnv):
         return act_info
 
 
-
+from collections import deque
 # state = each action (open, close, put, take) per object
 class ThorInteractionCount(ThorObjs):
 
     def __init__(self, config):
         super().__init__(config)
         self.state_count = collections.defaultdict(int)
+        self.last_five_actions = deque(maxlen=10)
+    # def get_reward(self, observations):
+    #     reward = 0
+
+    #     info = self.step_info
+    #     if info['action'] in self.interaction_set and info['target'] is not None and info['success']:
+    #         key = (info['action'], info['target']['objectId'])
+    #         if key not in self.state_count:
+    #             reward += 1.0
+    #             self.state_count[key] += 1
+
+    #     return reward
 
     def get_reward(self, observations):
         reward = 0
@@ -455,12 +709,32 @@ class ThorInteractionCount(ThorObjs):
         info = self.step_info
         if info['action'] in self.interaction_set and info['target'] is not None and info['success']:
             key = (info['action'], info['target']['objectId'])
-            if key not in self.state_count:
+            # print(key)
+            if key not in self.state_count and (key[0]!="take" and key[0]!="put"):
                 reward += 1.0
-                self.state_count[key] += 1
+                self.state_count[key] += 1.0
+                self.prev_key = key
+                self.last_five_actions.append(self.prev_key)
+                
+            if key not in self.state_count and (key[0]=="take" or key[0]=="put"):
+                # if self.prev_key[0] == "put" or self.prev_key[0] == "open":
+                # print("bhot badiya")
+                reward += 2
+                self.state_count[key] += 2
+                self.prev_key = key
+
+                    
+
+
+            # if key in self.state_count and (key[0]=="open" or key[0]=="close" or key[0]=="pick" or key[0]=="place"):
+            #     reward -= 0.1
+            #     self.state_count[key] -= 0.1
+
+
+
 
         return reward
-
+    
     def reset(self):
         obs = super().reset()
         self.state_count = collections.defaultdict(int)
@@ -547,7 +821,10 @@ class ThorObjectCoverage(ThorObjs):
     def get_reward(self, observations):
         reward = 0    
         target = self.get_target_obj(lambda obj: False) 
-        if target['int_target']=='center_obj' and self.seen[target['center_objectId']] == 0:
+        obj = [obj for obj in self.state.metadata["objects"] if obj["objectId"] == target['center_objectId']]
+        if target['int_target']=='center_obj' and self.seen[target['center_objectId']] == 0 and obj[0]["openable"]:
+
+            # print(target['center_objectId'])
             self.seen[target['center_objectId']] += 1
             reward += 1
         return reward

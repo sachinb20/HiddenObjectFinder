@@ -1,8 +1,0 @@
-2020-12-29 15:31:16,290 interaction_exploration/cv/random//run2/
-2020-12-29 15:31:16,290 num_steps: 1024
-2020-12-29 15:31:16,290 NO CHECKPOINT LOADED!
-2020-12-29 15:54:16,695 Average episode reward: 6.3125
-2021-01-07 15:06:58,006 interaction_exploration/cv/random//run2/
-2021-01-07 15:06:58,007 num_steps: 1024
-2021-01-07 15:06:58,007 NO CHECKPOINT LOADED!
-2021-01-07 15:29:34,332 Average episode reward: 6.3375

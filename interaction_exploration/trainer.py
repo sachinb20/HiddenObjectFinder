@@ -12,6 +12,13 @@ from rl.common.utils import batch_obs
 from rl.common.rollout_storage import RolloutStorage
 from .models.policy import PolicyNetwork
 from .viz_trainer import VizTrainer
+E2E = os.getenv('E2E')
+OBCOV = os.getenv('OBCOV')
+HYBRID = os.getenv('HYBRID')
+
+E2E = E2E.lower() == 'true'
+OBCOV = OBCOV.lower() == 'true'
+HYBRID = HYBRID.lower() == 'true'
 
 class RGBTrainer(VizTrainer):
 
@@ -38,7 +45,10 @@ class RGBTrainer(VizTrainer):
         batch = batch_obs(observations, device) # rgb: (32, 300, 300, 3) [0, 255]
         # print("$$$$$$$$$$$$$$$$$$$")
         # print(batch['rgb'].shape)
+        # print(batch['depth'].shape)
+        # print(batch['masks'].shape)
         rgb = self.transform(batch['rgb'])
+
         batch['rgb'] = rgb
         return batch
 
@@ -78,36 +88,102 @@ class RGBTrainer(VizTrainer):
             ppo_cfg.hidden_size,
         )
         return rollouts
-
-from affordance_seg.unet import UNet
-class BeaconTrainer(RGBTrainer):
+    
+class GTTrainer(RGBTrainer):
 
     def __init__(self, config, vis_encoder):
         super().__init__(config, vis_encoder)
-        self.unet = UNet(config)
+        # print('lawdaa')
+        # self.unet = UNet(config)
 
-        weights = torch.load(config.MODEL.BEACON_MODEL, map_location='cpu')['state_dict']
-        self.unet.load_state_dict(weights)
-        self.unet.eval().to(self.device)
-        print ('UNet checkpoint loaded')
+        # weights = torch.load(config.MODEL.BEACON_MODEL, map_location='cpu')['state_dict']
+        # self.unet.load_state_dict(weights)
+        # self.unet.eval().to(self.device)
+        # print ('UNet checkpoint loaded')
 
-        os.makedirs(os.path.join(config.CHECKPOINT_FOLDER, 'unet/'), exist_ok=True)
-        if not os.path.exists(os.path.join(config.CHECKPOINT_FOLDER, 'unet/', os.path.basename(config.MODEL.BEACON_MODEL))):
-            shutil.copy(config.MODEL.BEACON_MODEL, os.path.join(config.CHECKPOINT_FOLDER, 'unet/'))
-            print ('Saved UNet checkpoint to cv_dir')
+        # os.makedirs(os.path.join(config.CHECKPOINT_FOLDER, 'unet/'), exist_ok=True)
+        # if not os.path.exists(os.path.join(config.CHECKPOINT_FOLDER, 'unet/', os.path.basename(config.MODEL.BEACON_MODEL))):
+        #     shutil.copy(config.MODEL.BEACON_MODEL, os.path.join(config.CHECKPOINT_FOLDER, 'unet/'))
+        #     print ('Saved UNet checkpoint to cv_dir')
 
     def batch_obs(self, observations, device=None):
         batch = super().batch_obs(observations, device)
         with torch.no_grad():
-            imgs = batch['rgb'].to(self.device)
-            aux = self.unet.get_processed_affordances(imgs)
-            aux = (aux-self.config.DATA.AUX_MEAN)/self.config.DATA.AUX_STD
-        batch['aux'] = aux
+            # print(batch['aux'])
+            # print(batch['aux'])
+            masks = F.interpolate(batch['aux'], self.img_sz, mode='bilinear', align_corners=True)
+            # depth = F.interpolate(batch['depth'], self.img_sz, mode='bilinear', align_corners=True)
+            batch['aux'] = masks
+            # batch['depth'] = depth
+        return batch
+
+    def augment_obs_space(self, obs_space):
+        channels = 3 if E2E else 2
+        obs_space.spaces['aux'] = spaces.Box(-np.inf, np.inf, (channels, 80, 80))
+        return obs_space
+    
+class DepthTrainer(RGBTrainer):
+
+    def __init__(self, config, vis_encoder):
+        super().__init__(config, vis_encoder)
+        # print('lawdaa')
+        # self.unet = UNet(config)
+
+        # weights = torch.load(config.MODEL.BEACON_MODEL, map_location='cpu')['state_dict']
+        # self.unet.load_state_dict(weights)
+        # self.unet.eval().to(self.device)
+        # print ('UNet checkpoint loaded')
+
+        # os.makedirs(os.path.join(config.CHECKPOINT_FOLDER, 'unet/'), exist_ok=True)
+        # if not os.path.exists(os.path.join(config.CHECKPOINT_FOLDER, 'unet/', os.path.basename(config.MODEL.BEACON_MODEL))):
+        #     shutil.copy(config.MODEL.BEACON_MODEL, os.path.join(config.CHECKPOINT_FOLDER, 'unet/'))
+        #     print ('Saved UNet checkpoint to cv_dir')
+
+    def batch_obs(self, observations, device=None):
+        batch = super().batch_obs(observations, device)
+        with torch.no_grad():
+            # print(batch['depth'].shape)
+            masks = F.interpolate(batch['aux'], self.img_sz, mode='bilinear', align_corners=True)
+            depth = F.interpolate(batch['depth'], self.img_sz, mode='bilinear', align_corners=True)
+            batch['aux'] = masks
+            batch['depth'] = (depth-1.5)/0.6
+
         return batch
 
     def augment_obs_space(self, obs_space):
         obs_space.spaces['aux'] = spaces.Box(-np.inf, np.inf, (7, 80, 80))
+        obs_space.spaces['depth'] = spaces.Box(-np.inf, np.inf, (1, 80, 80))
         return obs_space
+    
+# from affordance_seg.unet import UNet
+# class BeaconTrainer(RGBTrainer):
+
+#     def __init__(self, config, vis_encoder):
+#         super().__init__(config, vis_encoder)
+#         self.unet = UNet(config)
+
+#         weights = torch.load(config.MODEL.BEACON_MODEL, map_location='cpu')['state_dict']
+#         self.unet.load_state_dict(weights)
+#         self.unet.eval().to(self.device)
+#         print ('UNet checkpoint loaded')
+
+#         os.makedirs(os.path.join(config.CHECKPOINT_FOLDER, 'unet/'), exist_ok=True)
+#         if not os.path.exists(os.path.join(config.CHECKPOINT_FOLDER, 'unet/', os.path.basename(config.MODEL.BEACON_MODEL))):
+#             shutil.copy(config.MODEL.BEACON_MODEL, os.path.join(config.CHECKPOINT_FOLDER, 'unet/'))
+#             print ('Saved UNet checkpoint to cv_dir')
+
+#     def batch_obs(self, observations, device=None):
+#         batch = super().batch_obs(observations, device)
+#         with torch.no_grad():
+#             imgs = batch['rgb'].to(self.device)
+#             aux = self.unet.get_processed_affordances(imgs)
+#             aux = (aux-self.config.DATA.AUX_MEAN)/self.config.DATA.AUX_STD
+#         batch['aux'] = aux
+#         return batch
+
+#     def augment_obs_space(self, obs_space):
+#         obs_space.spaces['aux'] = spaces.Box(-np.inf, np.inf, (7, 80, 80))
+#         return obs_space
 
 from .models.policy import RandomPolicy
 class RandomTrainer(RGBTrainer):

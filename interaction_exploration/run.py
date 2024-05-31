@@ -32,6 +32,8 @@ if __name__=='__main__':
         trainer.train()
     elif args.mode == 'eval':
         trainer.eval()
+    elif args.mode == 'no_action':
+        trainer.no_action()
     elif args.mode == 'enjoy':
         trainer.enjoy()
 

@@ -1,25 +1,23 @@
-numpy==1.19.1
-matplotlib==3.3.2
-einops==0.3.0
-torchvision==0.7.0
-gym==0.17.2
-imageio==2.9.0
-scipy==1.5.2
-pytorch_lightning==0.9.0
-ifcfg==0.21
-tqdm==4.49.0
-joblib==0.16.0
-yacs==0.1.8
-networkx==2.5
-attrs==20.3.0
-opencv_python==4.4.0.42
-segmentation_models_pytorch==0.1.3
-grpcio==1.32.0
-requests==2.24.0
-attr==0.3.1
-mock==4.0.3
-numba==0.52.0
-Pillow==8.1.0
-pytest==6.2.2
-quaternion==3.5.2.post4
-scikit_learn==0.24.1
+python -m interaction_exploration.run     --config interaction_exploration/config/intexpGT.yaml     --mode eval     ENV.NUM_STEPS 1024     NUM_PROCESSES 1     EVAL.DATASET interaction_exploration/data/test_episodes_K_16.json     TORCH_GPU_ID 0 X_DISPLAY :1     CHECKPOINT_FOLDER interaction_exploration/cv/intexpGT_Traverse_open_close/run0/ LOAD interaction_exploration/cv/intexpGT_Traverse_open_close/run0/ckpt.6.pth 
+
+
+python -m interaction_exploration.run     --config interaction_exploration/config/intexpGT_no_interact.yaml     --mode eval     ENV.NUM_STEPS 1024     NUM_PROCESSES 1     EVAL.DATASET interaction_exploration/data/test_episodes_K_16.json     TORCH_GPU_ID 0 X_DISPLAY :1     CHECKPOINT_FOLDER interaction_exploration/cv/intexpGT_Traverse_no_interact/run0/ LOAD interaction_exploration/cv/intexpGT_Traverse_no_interact/run0/ckpt.4.pth 
+
+
+#python -m interaction_exploration.run     --config interaction_exploration/config/intexpGT.yaml     --mode eval     ENV.NUM_STEPS 1024     NUM_PROCESSES 1     EVAL.DATASET interaction_exploration/data/test_episodes_K_16.json     TORCH_GPU_ID 0 X_DISPLAY :1     CHECKPOINT_FOLDER interaction_exploration/cv/intexpGT_Traverse_E2E/run0/ LOAD interaction_exploration/cv/intexpGT_Traverse_E2E/run0/ckpt.6.pth 
+
+python -m interaction_exploration.run     --config interaction_exploration/config/intexpGT.yaml     --mode eval     ENV.NUM_STEPS 1024     NUM_PROCESSES 1     EVAL.DATASET interaction_exploration/data/test_episodes_K_16.json     TORCH_GPU_ID 0 X_DISPLAY :1     CHECKPOINT_FOLDER interaction_exploration/cv/intexpGT_Traverse_E2E_new/run0/ LOAD interaction_exploration/cv/intexpGT_Traverse_E2E_new/run0/ckpt.8.pth 
+
+
+Future Work:
+Extending to find good trajectories for finding occludede but not hidden 
+Embedding semantics
+
+Add photos of ambiguos cases
+Explain the plots better
+Emphasize on empty drawers
+
+Talk about Low-Level Mem
+
+
+

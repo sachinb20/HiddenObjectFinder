@@ -6,7 +6,14 @@ import torch.nn as nn
 
 from rl.models.policy import Policy, BaseEncoder, Flatten
 from rl.models.rnn_state_encoder import RNNStateEncoder
+import os
+E2E = os.getenv('E2E')
+OBCOV = os.getenv('OBCOV')
+HYBRID = os.getenv('HYBRID')
 
+E2E = E2E.lower() == 'true'
+OBCOV = OBCOV.lower() == 'true'
+HYBRID = HYBRID.lower() == 'true'
 
 class SimpleCNN(nn.Module):
     
@@ -72,13 +79,57 @@ class TwoStreamNetwork(nn.Module):
                     nn.init.constant_(layer.bias, val=0)
 
 
+class ThreeStreamNetwork(nn.Module):
+    def __init__(self, observation_space, hidden_size, b1_inchannels, b2_inchannels, b3_inchannels):
+        super().__init__()
+        
+        # Construct the three branches (remove the final ReLUs)
+        self.branch1 = SimpleCNN(observation_space, hidden_size, in_channels=b1_inchannels).cnn
+        self.branch2 = SimpleCNN(observation_space, hidden_size, in_channels=b2_inchannels).cnn
+        self.branch3 = SimpleCNN(observation_space, hidden_size, in_channels=b3_inchannels).cnn
+        self.branch1[-1] = nn.Identity()
+        self.branch2[-1] = nn.Identity()
+        self.branch3[-1] = nn.Identity()
+
+        self.merge = nn.Sequential(
+                        nn.Linear(3*hidden_size, hidden_size),
+                        nn.ELU(True))
+
+        self.layer_init()
+
+    def forward(self, observations):
+        b1 = self.branch1(observations['rgb'])
+        b2 = self.branch2(observations['aux'])
+        b3 = self.branch3(observations['depth'])
+        output = self.merge(torch.cat([b1, b2, b3], 1))
+        return output
+
+    def layer_init(self):
+        for branch in [self.branch1, self.branch2, self.branch3]:
+            for layer in branch:
+                if isinstance(layer, (nn.Conv2d, nn.Linear)):
+                    nn.init.kaiming_normal_(layer.weight, nn.init.calculate_gain("relu"))
+                    if layer.bias is not None:
+                        nn.init.constant_(layer.bias, val=0)
+        for layer in self.merge:
+            if isinstance(layer, (nn.Conv2d, nn.Linear)):
+                nn.init.kaiming_normal_(layer.weight, nn.init.calculate_gain("relu"))
+                if layer.bias is not None:
+                    nn.init.constant_(layer.bias, val=0)
+
+
 class RGBSaliencyTwoStream(TwoStreamNetwork):
     def __init__(self, observation_space, hidden_size):
         super().__init__(observation_space, hidden_size, b1_inchannels=3, b2_inchannels=1)
 
 class RGBAffordanceTwoStream(TwoStreamNetwork):
     def __init__(self, observation_space, hidden_size):
-        super().__init__(observation_space, hidden_size, b1_inchannels=3, b2_inchannels=7)
+        channels = 3 if E2E else 2
+        super().__init__(observation_space, hidden_size, b1_inchannels=3, b2_inchannels=channels)
+
+class RGBAffordanceDepthStream(ThreeStreamNetwork):
+    def __init__(self, observation_space, hidden_size):
+        super().__init__(observation_space, hidden_size, b1_inchannels=3, b2_inchannels=7, b3_inchannels=1)
 
 
 class PolicyNetwork(Policy):
