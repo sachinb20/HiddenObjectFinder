@@ -1,3 +1,19 @@
+## Project introduction
+
+Scene representation is one of the key design
+choices that can facilitate downstream planning for a variety of
+tasks. Scene Graphs are a scalable and efficient representation
+as the volume of the scene and the duration of the robot’s
+operation increases. While most of the current literature
+focuses only on incorporating visible objects in a scene-graph,
+in this project, we focus on the hidden and occluded objects by
+interacting in the environment through a learned policy and
+consequently building an Action-Conditioned Scene Graph.
+The repo with the code for our work can be found here.
+
+**Please note that not all the code is the work of this project group**. We will use a basis provided by the DLG paper.
+For an idea of this basis, please utilize [this repository]([https://github.com/mit-han-lab/dlg](https://github.com/facebookresearch/interaction-exploration/tree/main)). However, we also
+merged these methods with our project contributions.
 
 ## Requirements
 Install required packages:
